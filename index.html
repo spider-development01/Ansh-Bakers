@@ -18,9 +18,10 @@
             list-style: none;
         }
         body {
-            background: rgb(36, 36, 36);
+            
             font-family: 'Bitter';
             overflow-x: hidden;
+            background: url(images/Slide\ 16_9\ -\ 1\ \(1\).svg);
         }
 
         header {
@@ -112,9 +113,14 @@
             overflow: hidden;
         }
         .flex-item-left {
-            padding: 20px;
+            padding: 40px;
             flex: 50%;
-            border-radius: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #ffffff;
         }
         .flex-item-right {
             padding: 40px;
@@ -158,19 +164,19 @@
         }
         .about{
             margin-top: 60px;
-            background-color: #242424;
+            
         }
-        .wall{
-            background: url('images/Untitled\ \(52\).svg') no-repeat center center;
-            background-size: cover;
-            height: 100%;
-        }
+
         .food-text{
-            color: #ffd5d5;
+            color: #ff7272;
             margin-bottom: 20px;
         }
         p{
-            color: #ffffff;
+            color: #494949;
+            background-color: #ffabab;
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid #242424;
         }
 
 div.gallery img {
@@ -385,11 +391,13 @@ footer{
     </header>
 
     <div class="flex-container">
-        <div class="flex-item-left"><img src="images/pexels-gustavo-fring-3983660.jpg" alt="Banner-image" width="100%" class="banner"></div>
-        <div class="flex-item-right">
+        <div class="flex-item-left">
             <h1>Welcome to Ansh Bakers</h1>
-            <p>Your one-stop shop for delicious baked goods.</p>
+            <p>THE SWEETEST PLACE IN TOWN!</p>
             <button onclick="location.href='order.html'">ORDER NOW!</button>
+</div>
+        <div class="flex-item-right">
+            <img src="images/Group 10.svg" alt="Banner-image" width="100%" class="banner">
         </div>
     </div>
     <section class="about" id="about">
@@ -503,7 +511,7 @@ footer{
                     <p class="add">
                         1474/2, St no. 11, Kwality Rd, near matharoo chownk, Shimlapuri, Ludhiana, Punjab 141003
                     </p>
-                    </span></p>
+                    </span>
             </div>
         </footer>
     </section>
