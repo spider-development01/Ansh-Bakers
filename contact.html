@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact US</title>
     <style>
                 @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800;900&display=swap");
 
@@ -111,7 +111,7 @@ header nav ul li a.active {
 .contact-left{
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     gap: 20px;
 }
 
@@ -260,7 +260,22 @@ footer{
     height: 1px;
     background-color: #242424;
 }
+.or{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.or h1{
+    margin: 10px;
+    color: #ffffff;
+}
 
+form{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
     </style>
 </head>
 <body>
@@ -292,6 +307,12 @@ footer{
     <input type="email" name="email" placeholder="Your Email" class="contact-inputs fly-in-right" required>
     <textarea name="message" placeholder="Your Message" class="contact-inputs fly-in-left"></textarea>   
     <a href="youtube.com" class="fly-in-right"><button type="submit">Submit<img src="forward.svg"></button></a>
+    <div class="or">
+        <h1>OR</h1>
+        <p class="add">
+            Customer Service Number:- +91 9316485701
+        </p>
+    </div>
     </form>
        </div> 
        <section class="footer" id="foot">    
