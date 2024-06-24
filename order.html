@@ -15,93 +15,93 @@
     text-decoration: none;
     list-style: none;
 }
-                body {
-            background: rgb(36, 36, 36);
-            font-family: 'Bitter';
-            overflow-x: hidden;
-        }
-.material-symbols-outlined {
-margin-top: -20px;
+body {
+    
+    font-family: 'Bitter';
+    overflow-x: hidden;
+    background: #d27f7f;
 }
 
-        header {
-            background: #343434;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 50px;
-            border-radius: 10px;
-            top: 0;
-            position:sticky;
-            z-index: 1000;
-        }
+header {
+    background: #fa8383;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    border-radius: 10px;
+    top: 0;
+    position:sticky;
+    z-index: 1000;
+}
 
-        .logo {
-            width: 120px;
-            margin-top: 5px;
-        }
-        header .logo {
-            font-size: 30px;
-            text-transform: uppercase;
-        }
-        header nav ul {
-            display: flex;
-        }
-        header nav ul li a {
-            display: inline-block;
-            color: #ffffff;
-            padding: 5px 0;
-            margin: 0 10px;
-            border: 3px solid transparent;
-            text-transform: uppercase;
-            transition: 0.2s;
-        }
-        header nav ul li a:hover,
-        header nav ul li a.active {
-            border-bottom-color: rgb(255, 255, 255);
-        }
-        .hamburger {
-            cursor: pointer;
-            display: none;
-        }
-        .hamburger div {
-            width: 30px;
-            height: 3px;
-            margin: 5px 0;
-            background: #ffffff;
-        }
-        @media only screen and (max-width: 900px) {
-            header {
-                padding: 0 30px;
-            }
-        }
-        @media only screen and (max-width: 700px) {
-            .hamburger {
-                display: block;
-            }
-            header nav {
-                position: absolute;
-                width: 100%;
-                left: -100%;
-                top: 70px;
-                width: 100%;
-                background: #343434;
-                padding: 30px;
-                transition: 0.3s;
-                border-radius:10px;
-                margin-top: 10px;
-            }
-            header #nav_check:checked ~ nav {
-                left: 0;
-            }
-            header nav ul {
-                display: block;
-            }
-            header nav ul li a {
-                margin: 5px 0;
-            }
-        }
+.logo {
+    width: 120px;
+    margin-top: 5px;
+}
+header .logo {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+header nav ul {
+    display: flex;
+}
+header nav ul li a {
+    display: inline-block;
+    color: #ffffff;
+    padding: 5px 0;
+    margin: 0 10px;
+    border: 3px solid transparent;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+header nav ul li a:hover,
+header nav ul li a.active {
+    border-bottom-color: rgb(255, 255, 255);
+}
+.hamburger {
+    cursor: pointer;
+    display: none;
+}
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    margin: 5px 0;
+    background: #ffffff;
+}
+@media only screen and (max-width: 900px) {
+    header {
+        padding: 0 30px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .hamburger {
+        display: block;
+    }
+    header nav {
+        position: absolute;
+        width: 100%;
+        left: -100%;
+        top: 70px;
+        width: 100%;
+        background: #ed8484;
+        padding: 30px;
+        transition: 0.3s;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    header #nav_check:checked ~ nav {
+        left: 0;
+    }
+    header nav ul {
+        display: block;
+    }
+    header nav ul li a {
+        margin: 5px 0;
+    }
+}
+
         .content {
             padding: 50px 20px;
         }
@@ -144,7 +144,7 @@ margin-top: -20px;
         }
 
         h1{
-    color:#ff7272;
+    color:#ffffff;
     text-align: center;
     margin-top: 20px; 
     font-size: 40px;
@@ -167,7 +167,20 @@ button {
             font-size: 30px;
             text-align: center;
         }
-        footer{
+    p {
+    color: #494949;
+    background-color: #ffabab;
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid #242424;
+}
+
+
+.add{
+    font-family: 'Bitter';
+}
+
+footer{
     width: 100%;
     padding: 50px 0px;
     background-image: url(images/Untitled\ \(53\).svg);
@@ -204,14 +217,22 @@ button {
 
 .box__footer h2{
     margin-bottom: 30px;
-    color: #ffffff;
+    color: #343434;
     font-weight: 700;
+    background-color: #ffabab;
+    text-align: center;
+    padding: 10px;
+    border:2px solid #343434;
+    border-radius: 20px;
 }
 
 .box__footer a{
     margin-top: 10px;
     color: #242424;
     font-weight: 600;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
 }
 
 .box__footer a:hover{
@@ -239,13 +260,6 @@ button {
     height: 1px;
     background-color: #242424;
 }
-p{
-    color: #ffffff;
-}
-
-.add{
-    font-family: 'Bitter';
-}
     </style>
 </head>
 <body>
@@ -258,6 +272,7 @@ p{
                 <li><a href="/index.html#about">About Us</a></li>
                 <li><a href="/index.html#food-gallery">Food gallery</a></li>
                 <li><a href="order.html">Order Now</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
         <label for="nav_check" class="hamburger">
@@ -266,7 +281,6 @@ p{
             <div></div>
         </label>
     </header>
-
     <div class="content">
         <h1>ORDER FROM??</h1>
         <div class="order-options">
@@ -294,13 +308,13 @@ p{
                 </div>
                 <div class="box__footer">
                     <h2>Order From</h2>
-                    <a href="https://www.zomato.com/ludhiana/ansh-bakers-gill-road/order">Zomato</a>
+                    <a href="https://www.zomato.com/ludhiana/ansh-bakers-gill-road">Zomato</a>
                     <a href="https://www.swiggy.com/restaurants/ansh-bakers-shimlapuri-gill-road-ludhiana-738621">Swiggy</a>
-                    <a href="https://www.google.com/search?q=ansh+bakers&rlz=1C1CHBF_enIN945IN945&oq=an&gs_lcrp=EgZjaHJvbWUqEQgAEEUYJxg7GOMCGIAEGIoFMhEIABBFGCcYOxjjAhiABBiKBTIVCAEQLhgnGK8BGMcBGIAEGIoFGI4FMgYIAhBFGDwyBggDEEUYPTIGCAQQRRg9MgYIBRBFGD0yBggGEEUYPDIGCAcQRRhB0gEIMTYzMmowajGoAgCwAgA&sourceid=chrome&ie=UTF-8">From Shop (Offline)</a>
+                    <a href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0zM4yMTE2Nok3YLRSNagwtjRMtDC2SLNMMjdMNjU0tTKoMDRPTbJMMjKzMDYwSkpKTvPiTswrzlBISsxOLSoGAEzVEro&q=ansh+bakers&rlz=1C1CHBF_enIN945IN945&oq=ansh&gs_lcrp=EgZjaHJvbWUqFQgBEC4YJxivARjHARiABBiKBRiOBTIGCAAQRRg8MhUIARAuGCcYrwEYxwEYgAQYigUYjgUyBggCEEUYOTINCAMQLhivARjHARiABDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEJMjkwMzlqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8">From Shop (Offline)</a>
                 </div>
     
                 <div class="box__footer">
-                    <h2>OUR MENU</h2>
+                    <h2>Our Menu</h2>
                     <a href="#">Biscuits</a>
                     <a href="#">Custom Designed Cakes</a>
                     <a href="#">Pastries</a>
@@ -311,10 +325,15 @@ p{
     
                 <div class="box__footer">
                     <h2>Social Links</h2>
-                    <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
-                    <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
-                    <a href="#"><i class="fab fa-linkedin"></i> Linkedin</a>
-                    <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
+                    <a href="#"><div class="links">
+                        <img src="facebook.svg" width="40px">
+                    </div></a>
+                    <a href="#"><div class="links">
+                        <img src="insta.svg" width="40px">
+                    </div></a>
+                    <a href="https://whatsapp.com/channel/0029Va4okLuHgZWlFmK8HM0k"><div class="links">
+                       <img src="whatsapp.svg" width="40px">
+                    </div></a>
                 </div>
     
             </div>
@@ -322,14 +341,17 @@ p{
             <div class="box__copyright">
                 <hr>
                 <p> Copyright &copy;<script>document.write(new Date().getFullYear());</script> @ <b>Ansh Bakers</b></p>
-                <p><span class="material-symbols-outlined">
-                    location_on 
                     <p class="add">
-                        1474/2, St no. 11, Kwality Rd, near matharoo chownk, Shimlapuri, Ludhiana, Punjab 141003
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                          </svg> 1474/2, St no. 11, Kwality Rd, near matharoo chownk, Shimlapuri, Ludhiana, Punjab 141003
                     </p>
-                    </span></p>
+                    </span>
             </div>
         </footer>
     </section>
+    
 </body>
 </html>
+
