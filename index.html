@@ -25,7 +25,7 @@
         }
 
         header {
-            background: #343434;
+            background: #ce5c5c;
             width: 100%;
             height: 70px;
             display: flex;
@@ -87,7 +87,7 @@
                 left: -100%;
                 top: 70px;
                 width: 100%;
-                background: #343434;
+                background: #df7575;
                 padding: 30px;
                 transition: 0.3s;
                 border-radius: 10px;
@@ -132,9 +132,19 @@
             flex-direction: column;
             color: #ffffff;
         }
-        .flex-item-right h1 {
+        .flex-item-right h5 {
             margin-bottom: 20px;
             color:#ff7272;
+            font-size: 40px;
+            text-align: center;
+
+        }
+
+        h5{
+            margin-bottom: 20px;
+            color:#ff7272;
+            font-size: 40px;
+            text-align: center;
         }
         /* Responsive layout - makes a one column-layout instead of two-column layout */
         @media (max-width: 800px) {
@@ -150,12 +160,12 @@
             border-radius: 20px;
         }
         button {
-            background: #ff0000;
+            background: #ce5c5c;
             font-family: inherit;
             padding: 0.6em 1.3em;
             font-weight: 900;
             font-size: 18px;
-            border: 3px solid rgb(255, 255, 255);
+            border: 3px solid #5b5b5b;
             margin-top: 30px;
             border-radius: 0.4em;
             box-shadow: 0.1em 0.1em;
@@ -223,11 +233,14 @@ div.gallery img {
 }
 
 h1{
-    color:#ff7272;
     text-align: center;
-    margin-top: 20px; 
     font-size: 40px;
-    margin-bottom: 20px;
+    color: #494949;
+    background-color: #ffabab;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px;
+    border: 2px solid #343434;
 }
 .logos{
   display: flex;
@@ -334,14 +347,22 @@ footer{
 
 .box__footer h2{
     margin-bottom: 30px;
-    color: #ffffff;
+    color: #343434;
     font-weight: 700;
+    background-color: #ffabab;
+    text-align: center;
+    padding: 10px;
+    border:2px solid #343434;
+    border-radius: 20px;
 }
 
 .box__footer a{
     margin-top: 10px;
     color: #242424;
     font-weight: 600;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
 }
 
 .box__footer a:hover{
@@ -392,7 +413,7 @@ footer{
 
     <div class="flex-container">
         <div class="flex-item-left">
-            <h1>Welcome to Ansh Bakers</h1>
+            <h5>Welcome to Ansh Bakers</h5>
             <p>THE SWEETEST PLACE IN TOWN!</p>
             <button onclick="location.href='order.html'">ORDER NOW!</button>
 </div>
@@ -404,7 +425,7 @@ footer{
         <div class="flex-container">
             <div class="flex-item-left"><img src="images/pexels-chudesabyvaut-1351350-3250406.jpg" alt="Baked goods" width="100%" class="banner"></div>
             <div class="flex-item-right">
-                <h1>About US</h1>
+                <h5>About US</h5>
                 <p>Ansh Bakers is a popular Indian bakery known for blending traditional Indian flavors with modern baking. Located in ludhaina, We offer quality sweets, pastries, and cakes, ensuring a delightful and welcoming experience for all visitors.</p>    
             </div>
         </div>
@@ -484,7 +505,7 @@ footer{
                 </div>
     
                 <div class="box__footer">
-                    <h2>OUR MENU</h2>
+                    <h2>Our Menu</h2>
                     <a href="#">Biscuits</a>
                     <a href="#">Custom Designed Cakes</a>
                     <a href="#">Pastries</a>
@@ -494,11 +515,16 @@ footer{
                 </div>
     
                 <div class="box__footer">
-                    <h2>Redes Sociales</h2>
-                    <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
-                    <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
-                    <a href="#"><i class="fab fa-linkedin"></i> Linkedin</a>
-                    <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
+                    <h2>Social Links</h2>
+                    <a href="#"><div class="links">
+                        <img src="facebook.svg" width="40px">
+                    </div></a>
+                    <a href="#"><div class="links">
+                        <img src="insta.svg" width="40px">
+                    </div></a>
+                    <a href="#"><div class="links">
+                       <img src="whatsapp.svg" width="40px">
+                    </div></a>
                 </div>
     
             </div>
@@ -506,14 +532,17 @@ footer{
             <div class="box__copyright">
                 <hr>
                 <p> Copyright &copy;<script>document.write(new Date().getFullYear());</script> @ <b>Ansh Bakers</b></p>
-                <p><span class="material-symbols-outlined">
-                    location_on 
                     <p class="add">
-                        1474/2, St no. 11, Kwality Rd, near matharoo chownk, Shimlapuri, Ludhiana, Punjab 141003
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                          </svg> 1474/2, St no. 11, Kwality Rd, near matharoo chownk, Shimlapuri, Ludhiana, Punjab 141003
                     </p>
                     </span>
             </div>
         </footer>
     </section>
+    
 </body>
 </html>
+
