@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800;900&display=swap");
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+text-decoration: none;
+list-style: none;
+}
+body {
+
+font-family: 'Bitter';
+overflow-x: hidden;
+background: #d27f7f;
+}
+
+header {
+background: #fa8383;
+width: 100%;
+height: 70px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 50px;
+border-radius: 10px;
+top: 0;
+position:sticky;
+z-index: 1000;
+}
+
+.logo {
+width: 120px;
+margin-top: 5px;
+}
+header .logo {
+font-size: 30px;
+text-transform: uppercase;
+}
+header nav ul {
+display: flex;
+}
+header nav ul li a {
+display: inline-block;
+color: #ffffff;
+padding: 5px 0;
+margin: 0 10px;
+border: 3px solid transparent;
+text-transform: uppercase;
+transition: 0.2s;
+}
+header nav ul li a:hover,
+header nav ul li a.active {
+border-bottom-color: rgb(255, 255, 255);
+}
+.hamburger {
+cursor: pointer;
+display: none;
+}
+.hamburger div {
+width: 30px;
+height: 3px;
+margin: 5px 0;
+background: #ffffff;
+}
+@media only screen and (max-width: 900px) {
+header {
+padding: 0 30px;
+}
+}
+@media only screen and (max-width: 700px) {
+.hamburger {
+display: block;
+}
+header nav {
+position: absolute;
+width: 100%;
+left: -100%;
+top: 70px;
+width: 100%;
+background: #ed8484;
+padding: 30px;
+transition: 0.3s;
+border-radius: 10px;
+margin-top: 10px;
+}
+header #nav_check:checked ~ nav {
+left: 0;
+}
+header nav ul {
+display: block;
+}
+header nav ul li a {
+margin: 5px 0;
+}
+}
+
+.contact-container{
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+}
+
+.contact-left{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 20px;
+}
+
+.contact-left-title h2{
+font-weight: 600;
+color: #ffffff;
+font-size: 40px;
+margin-bottom: -10px;
+margin-top: 25px;
+margin-right: 20px;
+}
+
+
+.contact-inputs{
+width:1200px;
+height: 50px;
+border: 2px solid #ffffff;
+padding-left: 25px;
+font-weight: 500;
+color: #ffffff;
+border-radius: 50px;
+background:#fa7b7b;
+}
+.contact-left textarea{
+height: 140px;
+padding-top: 15px;
+border-radius: 20px;
+}
+
+.contact-inputs:focus{
+border: 2px solid  #ffffff;
+}
+
+.contact-inputs::placeholder{
+color: #ffffff;
+}
+
+.contact-left button{
+display: flex;
+align-items: center;
+padding: 15px 30px;
+font-size: 16px;
+color: #ffffff;
+gap: 10px;
+border: none;
+border-radius: 50px;
+background: #fa7b7b;
+cursor: pointer;
+border: 2px solid  #ffffff;
+}
+p {
+color: #494949;
+background-color: #ffabab;
+border-radius: 20px;
+padding: 20px;
+border: 2px solid #242424;
+}
+
+.contact-left button img{
+height: 15px;
+}
+
+@media(max-width:1200px){
+.contact-inputs{
+width: 80vw;
+}
+}
+
+footer{
+width: 100%;
+padding: 50px 0px;
+background-image: url(images/Untitled\ \(53\).svg);
+background-size: cover;
+
+}
+
+.container__footer{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+max-width: 1200px;
+margin: auto;
+margin-top: 100px;
+}
+
+.box__footer{
+display: flex;
+flex-direction: column;
+padding: 40px;
+}
+
+.box__footer .logo img{
+width: 180px;
+}
+
+.box__footer .terms{
+max-width: 350px;
+margin-top: 20px;
+font-weight: 500;
+color: #7a7a7a;
+font-size: 18px;
+}
+
+.box__footer h2{
+margin-bottom: 30px;
+color: #343434;
+font-weight: 700;
+background-color: #ffabab;
+text-align: center;
+padding: 10px;
+border:2px solid #343434;
+border-radius: 20px;
+}
+
+.box__footer a{
+margin-top: 10px;
+color: #242424;
+font-weight: 600;
+cursor: pointer;
+justify-content: center;
+display: flex;
+}
+
+.box__footer a:hover{
+opacity: 0.8;
+}
+
+.box__footer a .fab{
+font-size: 20px;
+}
+
+.box__copyright{
+max-width: 1200px;
+margin: auto;
+text-align: center;
+padding: 0px 40px;
+}
+
+.box__copyright p{
+margin-top: 20px;
+color: #242424;
+}
+
+.box__copyright hr{
+border: none;
+height: 1px;
+background-color: #242424;
+}
+
+.logo-menu{
+    background-color: #ffffff;
+    width: 200px;
+    padding: 20px;
+    margin-left: 25px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+}
+
+.menu{
+    background-color: #ffffff;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 20px;
+    width: 90%;
+
+
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    color: #ffffff;
+    text-align: center;
+    font-size: 2.9rem;
+    margin-bottom: 10px;
+}
+
+        .menu h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #d27f7f;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        .menu li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .menu-2{
+            border-radius: 30px;
+        }
+        .logo-menu-3{
+            background-color: #ffffff;
+            border-radius: 30px;
+        }
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="images/logo.svg" class="logo" alt="Logo"></div>
+        <input type="checkbox" id="nav_check" hidden>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="/index.html#about">About Us</a></li>
+                <li><a href="/index.html#food-gallery">Food gallery</a></li>
+                <li><a href="menu.html">Our Menu</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <label for="nav_check" class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+    </header>
+    <h1>OUR MENU</h1>
+<div class="content">
+    <div class="logo-menu">
+        <img src="images/chocolate-cookies-cartoon-icon-illustration-food-snack-icon-concept-isolated-flat-cartoon-style 1.png" alt="" width="280px">
+    </div>
+    <div class="menu">
+        <h1>Biscuits</h1>
+        <ul> <li><b>Name:</b> <span><b>Price: per 300gm</b></span></li>
+            <li>Atta Biscuits <span> ₹55</span></li>
+            <li>Gud Atta Biscuits <span> ₹55</span></li>
+            <li>Chocolate Biscuits <span> ₹55</span></li>
+            <li>Butter Jam Biscuits <span> ₹55</span></li>
+            <li>Jeera Biscuits <span> ₹55</span></li>
+            <li>Ajwain Biscuits <span> ₹55</span></li>
+            <li>Tutty Fruity Biscuits <span> ₹55</span></li>
+            <li>Cherry Peanut Biscuits <span> ₹55</span></li>
+            <li>Mango Biscuits <span> ₹55</span></li>
+            <li>Peanut Biscuits <span> ₹55</span></li>
+            <li>Coconut Biscuits <span> ₹55</span></li>
+        </ul>
+    </div>
+
+</div>
+<div class="content">
+    <div class="logo-menu-2">
+        <img src="images/puff-pastry-buns-tasty-golden-600nw-2122251647.webp" alt="" width="180px" class="menu-2">
+    </div>
+    <div class="menu">
+        <h1>Puff Patties</h1>
+        <ul>
+            <li>Aloo Patties<span> ₹20</span></li>
+            <li>Cheese Chilly Patties <span> ₹30</span></li>
+        </ul>
+    </div>
+
+</div>
+<div class="content">
+    <div class="logo-menu-3">
+        <img src="images/red-velvet-cake-concept-illustration.png" alt="" width="180px">
+    </div>
+    <div class="menu">
+        <h1>Pastries</h1>
+        <ul>
+            <li>White Forest Pastry <span> ₹25</span></li>
+            <li>Chocolate Pastry<span> ₹25</span></li>
+            <h1>Cakes</h1>
+            <li><b>Name:</b><span><b>Price: per 1 Kg</b></span></li>
+            <li>Black Forest<span><b>₹420</b></span></li>
+            <li>Jelly Cake<span><b>₹440</b></span></li>
+            <li>Custom Cake<span><b> ₹550</b></span></li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="content">
+    <div class="logo-menu-2">
+        <img src="images/chocolate-brownies-on-plate-icon-600nw-2087034628.webp" alt="" width="180px" class="menu-2">
+    </div>
+    <div class="menu">
+        <h1><b>Brownies</b> slice</h1>
+        <ul>
+            <li>Choco Chip Brownie<span> ₹40</span></li>
+            <li>Dry Fruit Brownie <span> ₹35</span></li>
+        </ul>
+    </div>
+
+</div>
+    <section class="footer" id="foot">    
+        <footer>
+    
+            <div class="container__footer">
+                <div class="box__footer">
+                    <div class="logo">
+                        <img src="images/logo.svg" alt="">
+                    </div>
+                    <div class="terms">
+                        <p>Ansh Bakers is a popular Indian bakery known for blending traditional Indian flavors with modern baking. Located in ludhaina, We offer quality sweets, pastries, and cakes, ensuring a delightful and welcoming experience for all visitors.</p>
+                    </div>
+                </div>
+                <div class="box__footer">
+                    <h2>Order From</h2>
+                    <a href="https://www.zomato.com/ludhiana/ansh-bakers-gill-road">Zomato</a>
+                    <a href="https://www.swiggy.com/restaurants/ansh-bakers-shimlapuri-gill-road-ludhiana-738621">Swiggy</a>
+                    <a href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0zM4yMTE2Nok3YLRSNagwtjRMtDC2SLNMMjdMNjU0tTKoMDRPTbJMMjKzMDYwSkpKTvPiTswrzlBISsxOLSoGAEzVEro&q=ansh+bakers&rlz=1C1CHBF_enIN945IN945&oq=ansh&gs_lcrp=EgZjaHJvbWUqFQgBEC4YJxivARjHARiABBiKBRiOBTIGCAAQRRg8MhUIARAuGCcYrwEYxwEYgAQYigUYjgUyBggCEEUYOTINCAMQLhivARjHARiABDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEJMjkwMzlqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8">From Shop (Offline)</a>
+                </div>
+    
+                <div class="box__footer">
+                    <h2>Our Menu</h2>
+                    <a href="#">Biscuits</a>
+                    <a href="#">Custom Designed Cakes</a>
+                    <a href="#">Pastries</a>
+                    <a href="#">Puff Patties</a>
+                    <a href="#">Cream Rolls</a>
+                    <a href="#">Choco Brownies</a>                  
+                </div>
+    
+                <div class="box__footer">
+                    <h2>Social Links</h2>
+                    <a href="https://www.facebook.com/profile.php?id=61561028477406"><div class="links">
+                        <img src="facebook.svg" width="40px">
+                    </div></a>
+                    <a href="https://www.instagram.com/ansh_bakers/"><div class="links">
+                        <img src="insta.svg" width="40px">
+                    </div></a>
+                    <a href="https://whatsapp.com/channel/0029Va4okLuHgZWlFmK8HM0k"><div class="links">
+                       <img src="whatsapp.svg" width="40px">
+                    </div></a>
+                </div>
+    
+            </div>
+    
+            <div class="box__copyright">
+                <hr>
+                <p> Copyright &copy;<script>document.write(new Date().getFullYear());</script> @ <b>Ansh Bakers</b></p>
+                    <p class="add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                          </svg> 1474/2, St no. 11, Kwality Rd, near matharoo chownk, Shimlapuri, Ludhiana, Punjab 141003
+                    </p>
+                    </span>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
