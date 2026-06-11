@@ -1,390 +1,685 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact US</title>
-    <style>
-                @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800;900&display=swap");
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-}
-body {
+  <!-- SEO Meta -->
+  <title>Contact Us — Ansh Bakers</title>
+  <meta name="description" content="Get in touch with Ansh Bakers in Ludhiana. Order custom cakes, leave feedback, or find our bakery location and opening hours.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    /* ═══════════════════════════════════════════
+       TOKENS & RESET
+    ═══════════════════════════════════════════ */
+    :root {
+      --brown-deep:   #1a0a00;
+      --brown-mid:    #3D1C02;
+      --brown-warm:   #7C4A1E;
+      --gold:         #C8956C;
+      --rose:         #F2B5A0;
+      --cream:        #FFF8F0;
+      --cream-light:  #FAF4ED;
+      --blush:        #FDEEE8;
+      --text-dark:    #1a0a00;
+      --text-mid:     #5C3317;
+      --text-light:   #9C7B6B;
+      --white:        #ffffff;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Outfit', sans-serif;
+      --font-label:   'Syne', sans-serif;
+      --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
+      --transition:   0.3s var(--ease-smooth);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ul { list-style: none; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ═══════════════════════════════════════════
+       PAGE LOADER (Fast & Precise)
+    ═══════════════════════════════════════════ */
+    #page-loader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--brown-deep);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 24px;
+      transition: opacity 0.3s var(--ease-smooth), visibility 0.3s;
+    }
+    #page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .loader-logo {
+      font-family: var(--font-display);
+      font-size: 2.5rem; color: var(--cream);
+      letter-spacing: 0.02em; opacity: 0;
+      animation: loaderFadeIn 0.3s 0.1s forwards;
+    }
+    .loader-logo em { color: var(--gold); font-style: italic; }
+
+    .dough-ring {
+      width: 48px; height: 48px;
+      border: 3px solid rgba(200,149,108,0.2);
+      border-top-color: var(--gold); border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    .loader-tagline {
+      font-family: var(--font-label); font-size: 0.75rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-light); opacity: 0;
+      animation: loaderFadeIn 0.3s 0.2s forwards;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes loaderFadeIn { to { opacity: 1; } }
+
+    /* ═══════════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════════ */
+    .nav-wrap {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1050;
+      padding: 20px 0;
+      transition: background 0.4s var(--ease-smooth), padding 0.4s, box-shadow 0.4s;
+    }
+    .nav-wrap.scrolled {
+      background: rgba(255,248,240,0.92);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      padding: 12px 0; box-shadow: 0 2px 30px rgba(26,10,0,0.08);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+      color: var(--white); transition: color var(--transition);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-wrap.scrolled .nav-logo, .nav-wrap.menu-open .nav-logo { color: var(--brown-deep); }
+    .nav-wrap.menu-open .nav-logo { color: var(--white); }
     
-    font-family: 'Bitter';
-    overflow-x: hidden;
-    background: #d27f7f;
-}
-
-header {
-    background: #fa8383;
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px;
-    border-radius: 10px;
-    top: 0;
-    position:sticky;
-    z-index: 1000;
-}
-
-.logo {
-    width: 120px;
-    margin-top: 5px;
-}
-header .logo {
-    font-size: 30px;
-    text-transform: uppercase;
-}
-header nav ul {
-    display: flex;
-}
-header nav ul li a {
-    display: inline-block;
-    color: #ffffff;
-    padding: 5px 0;
-    margin: 0 10px;
-    border: 3px solid transparent;
-    text-transform: uppercase;
-    transition: 0.2s;
-}
-header nav ul li a:hover,
-header nav ul li a.active {
-    border-bottom-color: rgb(255, 255, 255);
-}
-.hamburger {
-    cursor: pointer;
-    display: none;
-}
-.hamburger div {
-    width: 30px;
-    height: 3px;
-    margin: 5px 0;
-    background: #ffffff;
-}
-@media only screen and (max-width: 900px) {
-    header {
-        padding: 0 30px;
+    .nav-logo-icon {
+      width: 32px; height: 32px; background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
     }
-}
-@media only screen and (max-width: 700px) {
-    .hamburger {
-        display: block;
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a {
+      font-family: var(--font-label); font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85);
+      transition: color var(--transition); position: relative;
     }
-    header nav {
-        position: absolute;
-        width: 100%;
-        left: -100%;
-        top: 70px;
-        width: 100%;
-        background: #ed8484;
-        padding: 30px;
-        transition: 0.3s;
-        border-radius: 10px;
-        margin-top: 10px;
+    .nav-wrap.scrolled .nav-links a { color: var(--text-mid); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 100%;
+      height: 1.5px; background: var(--gold); transition: right 0.3s var(--ease-smooth);
     }
-    header #nav_check:checked ~ nav {
-        left: 0;
+    .nav-links a:hover::after, .nav-links a.active::after { right: 0; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-wrap.scrolled .nav-links a:hover { color: var(--brown-deep); }
+
+    .nav-cta {
+      background: var(--gold); color: var(--white) !important;
+      padding: 10px 22px; border-radius: 100px; font-family: var(--font-label);
+      font-size: 0.78rem !important; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; transition: background var(--transition), transform var(--transition), box-shadow var(--transition) !important;
     }
-    header nav ul {
-        display: block;
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: var(--brown-warm) !important; transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(200,149,108,0.4);
     }
-    header nav ul li a {
-        margin: 5px 0;
+
+    .ham-btn {
+      display: none; flex-direction: column; justify-content: space-between;
+      width: 24px; height: 17px; cursor: pointer;
     }
-}
-
-.contact-container{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.contact-left{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.contact-left-title h2{
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 40px;
-    margin-bottom: -10px;
-    margin-top: 35px;
-    margin-right: 20px;
-}
-
-
-.contact-inputs{
-    width:1200px;
-    height: 50px;
-    border: 2px solid #ffffff;
-    padding-left: 25px;
-    font-weight: 500;
-    color: #ffffff;
-    border-radius: 50px;
-    background:#fa7b7b;
-}
-.contact-left textarea{
-    height: 140px;
-    padding-top: 15px;
-    border-radius: 20px;
-}
-
-.contact-inputs:focus{
-border: 2px solid  #ffffff;
-}
-
-.contact-inputs::placeholder{
-    color: #ffffff;
-}
-
-.contact-left button{
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-    font-size: 16px;
-    color: #ffffff;
-    gap: 10px;
-    border: none;
-    border-radius: 50px;
-    background: #fa7b7b;
-    cursor: pointer;
-    border: 2px solid  #ffffff;
-}
-p {
-    color: #494949;
-    background-color: #ffabab;
-    border-radius: 20px;
-    padding: 20px;
-    border: 2px solid #242424;
-}
-
-.contact-left button img{
-    height: 15px;
-}
-
-@media(max-width:1200px){
-    .contact-inputs{
-        width: 80vw;
+    .ham-btn span {
+      display: block; width: 100%; height: 2px; background: var(--white);
+      border-radius: 2px; transition: var(--transition);
     }
-}
+    .nav-wrap.scrolled:not(.menu-open) .ham-btn span { background: var(--brown-deep); }
+    .ham-btn.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .ham-btn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .ham-btn.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-footer{
-    width: 100%;
-    padding: 50px 0px;
-    background-image: url(images/Untitled\ \(53\).svg);
-    background-size: cover;
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 1040;
+      background: var(--brown-deep); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2rem;
+      opacity: 0; visibility: hidden; transform: translateY(-20px); transition: all 0.4s var(--ease-smooth);
+    }
+    .mobile-menu.active { opacity: 1; visibility: visible; transform: translateY(0); }
+    .mobile-menu a {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 600;
+      color: var(--cream); transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu-cta {
+      background: var(--gold); color: var(--white); padding: 14px 40px; border-radius: 100px;
+      font-family: var(--font-label); font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1rem; transition: background var(--transition);
+    }
+    .mobile-menu-cta:hover { background: var(--brown-warm); }
 
-}
+    /* ═══════════════════════════════════════════
+       CONTACT HERO
+    ═══════════════════════════════════════════ */
+    .contact-hero {
+      position: relative; min-height: 50vh;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--brown-deep); overflow: hidden;
+      text-align: center; padding-top: 80px;
+    }
+    .hero-parallax-bg {
+      position: absolute; inset: -10%;
+      background: radial-gradient(ellipse at 50% 50%, #3D1C02 0%, #1a0a00 70%);
+      will-change: transform;
+    }
+    #hero-canvas { position: absolute; inset: 0; pointer-events: none; opacity: 0.35; }
+    
+    .hero-inner {
+      position: relative; z-index: 1; padding: 0 32px;
+      opacity: 0; transform: translateY(30px);
+      animation: heroIn 0.9s 0.2s var(--ease-spring) forwards;
+    }
+    @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
 
-.container__footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    margin-top: 100px;
-}
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: var(--font-label); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--gold);
+    }
+    .hero-title {
+      font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 700; color: var(--cream); margin-bottom: 16px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-desc {
+      font-size: 1.05rem; line-height: 1.7; color: rgba(255,248,240,0.65);
+      max-width: 500px; margin: 0 auto;
+    }
 
-.box__footer{
-    display: flex;
-    flex-direction: column;
-    padding: 40px;
-}
+    /* ═══════════════════════════════════════════
+       CONTACT SECTION (GRID & FORM)
+    ═══════════════════════════════════════════ */
+    .section { padding: 100px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
-.box__footer .logo img{
-    width: 180px;
-}
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start;
+    }
 
-.box__footer .terms{
-    max-width: 350px;
-    margin-top: 20px;
-    font-weight: 500;
-    color: #7a7a7a;
-    font-size: 18px;
-}
+    /* Left Info */
+    .contact-info-wrap {
+      background: var(--white); border-radius: 24px; padding: 40px;
+      box-shadow: 0 20px 40px rgba(200,149,108,0.08);
+      border: 1px solid rgba(200,149,108,0.15);
+    }
+    .contact-info-title {
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
+      color: var(--brown-deep); margin-bottom: 32px;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+    .contact-item-icon {
+      width: 46px; height: 46px; background: var(--blush); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0; color: var(--gold);
+    }
+    .contact-item-label {
+      font-family: var(--font-label); font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px;
+    }
+    .contact-item-body { font-size: 0.95rem; line-height: 1.5; color: var(--brown-deep); font-weight: 500; }
 
-.box__footer h2{
-    margin-bottom: 30px;
-    color: #343434;
-    font-weight: 700;
-    background-color: #ffabab;
-    text-align: center;
-    padding: 10px;
-    border:2px solid #343434;
-    border-radius: 20px;
-}
+    /* Right Form */
+    .contact-form-wrap {
+      background: var(--cream-light); border-radius: 24px; padding: 48px;
+    }
+    .form-group { margin-bottom: 24px; }
+    .form-label {
+      display: block; font-family: var(--font-label); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown-deep); margin-bottom: 10px;
+    }
+    .form-control {
+      width: 100%; padding: 18px 24px; font-family: var(--font-body); font-size: 1rem;
+      color: var(--brown-deep); background: var(--white); border: 1.5px solid rgba(200,149,108,0.2);
+      border-radius: 16px; transition: all var(--transition);
+    }
+    .form-control::placeholder { color: rgba(92,51,23,0.4); }
+    .form-control:focus {
+      border-color: var(--gold); box-shadow: 0 0 0 4px rgba(200,149,108,0.15); outline: none;
+    }
+    textarea.form-control { min-height: 160px; resize: vertical; }
+    
+    .btn-submit {
+      width: 100%; background: var(--gold); color: var(--white); padding: 18px;
+      border-radius: 100px; font-family: var(--font-label); font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-submit:hover {
+      background: var(--brown-warm); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(200,149,108,0.4);
+    }
 
-.box__footer a{
-    margin-top: 10px;
-    color: #242424;
-    font-weight: 600;
-    cursor: pointer;
-    justify-content: center;
-    display: flex;
-}
+    /* Map Section */
+    .map-section { padding-bottom: 100px; }
+    .map-placeholder {
+      width: 100%; height: 450px; border-radius: 24px; overflow: hidden;
+      background: #e8ddd5; position: relative; box-shadow: 0 20px 40px rgba(26,10,0,0.06);
+    }
+    .map-placeholder iframe { width: 100%; height: 100%; border: none; }
+    .map-card {
+      position: absolute; bottom: 24px; left: 24px; background: var(--white);
+      border-radius: 16px; padding: 16px 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .map-card-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--brown-deep); }
+    .map-card-sub { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
 
-.box__footer a:hover{
-    opacity: 0.8;
-}
+    /* Reveal Animations */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
 
-.box__footer a .fab{
-    font-size: 20px;
-}
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer { background: var(--brown-deep); padding: 80px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+    .footer-logo-text {
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .footer-logo-icon {
+      width: 38px; height: 38px; background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .footer-tagline { font-size: 0.88rem; line-height: 1.65; color: rgba(255,248,240,0.4); max-width: 280px; }
+    .footer-col h3 {
+      font-family: var(--font-label); font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.88rem; color: rgba(255,248,240,0.5); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--cream); }
 
-.box__copyright{
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
-    padding: 0px 40px;
-}
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 28px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,248,240,0.3); }
+    .footer-copy b { color: rgba(255,248,240,0.55); }
+    .footer-address { font-size: 0.75rem; color: rgba(255,248,240,0.3); display: flex; align-items: center; gap: 6px; }
 
-.box__copyright p{
-    margin-top: 20px;
-    color: #242424;
-}
+    /* Back to Top */
+    .back-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 500;
+      width: 46px; height: 46px; background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 1.1rem; opacity: 0; visibility: hidden;
+      transform: translateY(16px); transition: all var(--transition);
+      box-shadow: 0 4px 16px rgba(200,149,108,0.4);
+    }
+    .back-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .back-top:hover { background: var(--brown-warm); transform: translateY(-3px); }
 
-.box__copyright hr{
-    border: none;
-    height: 1px;
-    background-color: #242424;
-}
-.or{
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
-.or h1{
-    margin: 10px;
-    color: #ffffff;
-}
-
-form{
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin-top: 80px;
-}
-    </style>
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .ham-btn { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .section { padding: 64px 0; }
+      .map-section { padding-bottom: 64px; }
+      .contact-form-wrap { padding: 32px 24px; }
+      .contact-info-wrap { padding: 32px 24px; }
+      .hero-title { font-size: 2.8rem; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo"><img src="images/logo.svg" class="logo" alt="Logo"></div>
-        <input type="checkbox" id="nav_check" hidden>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="/index.html#about">About Us</a></li>
-                <li><a href="/index.html#food-gallery">Food gallery</a></li>
-                <li><a href="menu.html">Our Menu</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-        <label for="nav_check" class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </label>
-    </header>
-    <div class="contact-container ">
-        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
-    <div class="contact-left-title fly-in-right">
-        <h2>Contact Us</h2>
+
+  <!-- ════ PAGE LOADER ════ -->
+  <div id="page-loader" role="status" aria-label="Loading">
+    <div class="loader-logo">Ansh <em>Bakers</em></div>
+    <div class="dough-ring"></div>
+    <div class="loader-tagline">Crafted with love · Ludhiana</div>
+  </div>
+
+  <!-- ════ NAVBAR ════ -->
+  <div class="nav-wrap" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Ansh Bakers Home">
+        <div class="nav-logo-icon"><i class="bi bi-cake2-fill" style="font-size:1rem;color:var(--white);"></i></div>
+        Ansh Bakers
+      </a>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="order.html" class="nav-cta">Order Now</a></li>
+        </ul>
+      </nav>
+      <button class="ham-btn" id="ham-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <input type="hidden" name="access_key" value="d73c00c2-3451-448c-997a-55dcb8579b6f">
-    <input type="text" name="name" placeholder="Your Name" class="contact-inputs fly-in-left" required>
-    <input type="email" name="email" placeholder="Your Email" class="contact-inputs fly-in-right" required>
-    <textarea name="message" placeholder="Your Message" class="contact-inputs fly-in-left"></textarea>   
-    <a href="youtube.com" class="fly-in-right"><button type="submit">Submit<img src="forward.svg"></button></a>
-    <div class="or">
-        <h1>OR</h1>
-        <p class="add" style="margin: 10px;">
-            Customer Service Number:- +91 9316485701
-        </p>
-        <p class="add" style="margin: 10px;">
-            Customer service :- Monday to Saturday - 7 am to 9 pm<br>
-                                Sunday - 7 am to 7 pm
-        </p>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <a href="index.html#about" class="mob-link">About</a>
+    <a href="index.html#gallery" class="mob-link">Gallery</a>
+    <a href="menu.html" class="mob-link">Menu</a>
+    <a href="contact.html" class="mob-link">Contact</a>
+    <a href="order.html" class="mobile-menu-cta">Order Now →</a>
+  </div>
+
+  <!-- ════ HERO ════ -->
+  <section class="contact-hero" aria-label="Contact Header">
+    <div class="hero-parallax-bg" id="hero-bg"></div>
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    
+    <div class="hero-inner">
+      <div class="hero-eyebrow">We're Here for You</div>
+      <h1 class="hero-title">Get in <em>Touch</em></h1>
+      <p class="hero-desc">Whether it's a custom cake order, feedback on our treats, or just saying hello — we'd love to hear from you.</p>
     </div>
-    </form>
-       </div> 
-       <section class="footer" id="foot">    
-        <footer>
-    
-            <div class="container__footer">
-                <div class="box__footer">
-                    <div class="logo">
-                        <img src="images/logo.svg" alt="">
-                    </div>
-                    <div class="terms">
-                        <p>Ansh Bakers is a popular Indian bakery known for blending traditional Indian flavors with modern baking. Located in ludhaina, We offer quality sweets, pastries, and cakes, ensuring a delightful and welcoming experience for all visitors.</p>
-                    </div>
-                </div>
-                <div class="box__footer">
-                    <h2>Order From</h2>
-                    <a href="https://www.zomato.com/ludhiana/ansh-bakers-gill-road">Zomato</a>
-                    <a href="https://www.swiggy.com/restaurants/ansh-bakers-shimlapuri-gill-road-ludhiana-738621">Swiggy</a>
-                    <a href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0zM4yMTE2Nok3YLRSNagwtjRMtDC2SLNMMjdMNjU0tTKoMDRPTbJMMjKzMDYwSkpKTvPiTswrzlBISsxOLSoGAEzVEro&q=ansh+bakers&rlz=1C1CHBF_enIN945IN945&oq=ansh&gs_lcrp=EgZjaHJvbWUqFQgBEC4YJxivARjHARiABBiKBRiOBTIGCAAQRRg8MhUIARAuGCcYrwEYxwEYgAQYigUYjgUyBggCEEUYOTINCAMQLhivARjHARiABDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEJMjkwMzlqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8">From Shop (Offline)</a>
-                </div>
-    
-                <div class="box__footer">
-                    <h2>Our Menu</h2>
-                    <a href="#">Biscuits</a>
-                    <a href="#">Custom Designed Cakes</a>
-                    <a href="#">Ice Cream</a>
-                    <a href="#">Pastries</a>
-                    <a href="#">Puff Patties</a>
-                    <a href="#">Cream Rolls</a>
-                    <a href="#">Choco Brownies</a>                  
-                </div>
-    
-                <div class="box__footer">
-                    <h2>Social Links</h2>
-                    <a href="https://www.facebook.com/profile.php?id=61561028477406"><div class="links">
-                        <img src="facebook.svg" width="40px">
-                    </div></a>
-                    <a href="https://www.instagram.com/ansh_bakers/"><div class="links">
-                        <img src="insta.svg" width="40px">
-                    </div></a>
-                    <a href="https://whatsapp.com/channel/0029Va4okLuHgZWlFmK8HM0k"><div class="links">
-                       <img src="whatsapp.svg" width="40px">
-                    </div></a>
-                </div>
-    
+  </section>
+
+  <!-- ════ CONTACT GRID (INFO + FORM) ════ -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Left: Contact Info -->
+        <div class="contact-info-wrap reveal">
+          <h2 class="contact-info-title">Contact Details</h2>
+          <div class="contact-items">
+            
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="bi bi-geo-alt-fill"></i></div>
+              <div>
+                <div class="contact-item-label">Our Bakery</div>
+                <div class="contact-item-body">1474/2, St no. 11, Kwality Rd,<br>near matharoo chownk, Shimlapuri,<br>Ludhiana, Punjab 141003</div>
+              </div>
             </div>
-    
-            <div class="box__copyright">
-                <hr>
-                <p> Copyright &copy;<script>document.write(new Date().getFullYear());</script> @ <b>Ansh Bakers</b></p>
-                    <p class="add">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                          </svg> 1474/2, St no. 11, Kwality Rd, near matharoo chownk, Shimlapuri, Ludhiana, Punjab 141003
-                    </p>
-                    </span>
-                    <p class="add">
-                        Customer Service Number:- +91 9316485701
-                    </p>
-                    <p class="add">
-                        Customer service :- Monday to Saturday - 7 am to 9 pm<br>
-                                            Sunday - 7 am to 7 pm
-                    </p>
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="bi bi-telephone-fill"></i></div>
+              <div>
+                <div class="contact-item-label">Customer Service</div>
+                <div class="contact-item-body">
+                  <a href="tel:+919316485701" style="color:var(--brown-deep); transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--brown-deep)'">
+                    +91 9316485701
+                  </a>
+                </div>
+              </div>
             </div>
-        </footer>
-    </section>
-    
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="bi bi-clock-fill"></i></div>
+              <div>
+                <div class="contact-item-label">Opening Hours</div>
+                <div class="contact-item-body">Monday to Saturday: 7:00 AM – 9:00 PM<br>Sunday: 7:00 AM – 7:00 PM</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Web3Forms -->
+        <div class="contact-form-wrap reveal reveal-delay-1">
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="d73c00c2-3451-448c-997a-55dcb8579b6f">
+            
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea id="message" name="message" class="form-control" placeholder="How can we help you today?" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">
+              Send Message <i class="bi bi-send-fill"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ MAP SECTION ════ -->
+  <section class="map-section bg-cream">
+    <div class="container reveal">
+      <div class="map-placeholder">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3418.864847655!2d75.8275!3d30.9010!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a83b78fc0f4b5%3A0x5c97b0e62d56ca03!2sAnsh%20Bakers!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+          allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ansh Bakers location on Google Maps">
+        </iframe>
+        <div class="map-card">
+          <div class="map-card-name"><i class="bi bi-shop" style="color:var(--gold);margin-right:8px;"></i>Ansh Bakers</div>
+          <div class="map-card-sub">Shimlapuri, Ludhiana</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-text">
+            <div class="footer-logo-icon"><i class="bi bi-cake2-fill" style="font-size:1.1rem;color:var(--white);"></i></div>
+            Ansh Bakers
+          </div>
+          <p class="footer-tagline">Ludhiana's finest artisan bakery — blending the warmth of traditional Indian flavors with modern baking craft since day one.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Navigate</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="menu.html">Our Menu</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Menu</h3>
+          <ul>
+            <li><a href="menu.html#biscuits">Biscuits</a></li>
+            <li><a href="menu.html#pastries-cakes">Custom Cakes</a></li>
+            <li><a href="menu.html#pastries-cakes">Pastries</a></li>
+            <li><a href="menu.html#patties">Puff Patties</a></li>
+            <li><a href="menu.html#brownies">Choco Brownies</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Order From</h3>
+          <ul>
+            <li><a href="https://www.zomato.com/ludhiana/ansh-bakers-gill-road" target="_blank" rel="noopener">Zomato</a></li>
+            <li><a href="https://www.swiggy.com/restaurants/ansh-bakers-shimlapuri-gill-road-ludhiana-738621" target="_blank" rel="noopener">Swiggy</a></li>
+            <li><a href="order.html">Custom Order</a></li>
+            <li><a href="https://www.google.com/search?q=ansh+bakers+ludhiana" target="_blank" rel="noopener">From Shop</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="year"></span> <b>Ansh Bakers</b>. All rights reserved.
+        </div>
+        <div class="footer-address">
+          <i class="bi bi-geo-alt-fill" style="opacity:.5;font-size:0.85rem;"></i>
+          1474/2, Shimlapuri, Ludhiana, Punjab 141003
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="back-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up" style="font-size:1.1rem;"></i>
+  </button>
+
+  <script>
+    /* ════ LOADER (Optimized Timeout) ════ */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('page-loader').classList.add('hidden');
+      }, 200); // Super fast 200ms delay
+    });
+
+    /* ════ YEAR ════ */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ════ NAVBAR & BACK TO TOP SCROLL ════ */
+    const navbar = document.getElementById('navbar');
+    const backTop = document.getElementById('back-top');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      navbar.classList.toggle('scrolled', y > 60);
+      backTop.classList.toggle('show', y > 400);
+    }, { passive: true });
+
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ════ HAMBURGER ════ */
+    const hamBtn = document.getElementById('ham-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamBtn.addEventListener('click', () => {
+      const open = hamBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('active', open);
+      navbar.classList.toggle('menu-open', open); // Class to handle logo color
+      hamBtn.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mob-link, .mobile-menu-cta').forEach(link => {
+      link.addEventListener('click', () => {
+        hamBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        navbar.classList.remove('menu-open');
+        hamBtn.setAttribute('aria-expanded', false);
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ════ SCROLL REVEAL ════ */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ════ HERO CANVAS ════ */
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+
+    function createParticle() {
+      return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height + canvas.height,
+        r: Math.random() * 3 + 1,
+        speed: Math.random() * 0.6 + 0.2,
+        opacity: Math.random() * 0.5 + 0.1,
+        drift: (Math.random() - 0.5) * 0.3
+      };
+    }
+
+    for (let i = 0; i < 60; i++) {
+      const p = createParticle();
+      p.y = Math.random() * canvas.height;
+      particles.push(p);
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.y -= p.speed;
+        p.x += p.drift;
+        if (p.y < -10) { particles[i] = createParticle(); }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, 149, 108, ${p.opacity})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    /* ════ PARALLAX HERO BG ════ */
+    const heroBg = document.getElementById('hero-bg');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight) {
+        heroBg.style.transform = `translateY(${y * 0.25}px)`;
+      }
+    }, { passive: true });
+  </script>
 </body>
 </html>
