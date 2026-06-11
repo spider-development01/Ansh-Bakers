@@ -6,20 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta -->
-  <title>Ansh Bakers — The Sweetest Place in Ludhiana</title>
-  <meta name="description" content="Ansh Bakers is Ludhiana's finest bakery, blending traditional Indian flavors with modern artisan baking. Custom cakes, pastries, biscuits & more.">
-  <meta name="keywords" content="Ansh Bakers, bakery Ludhiana, custom cakes Ludhiana, pastries, biscuits, Indian bakery, Shimlapuri bakery">
-  <meta name="author" content="Ansh Bakers">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://anshbakers.com/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Ansh Bakers — The Sweetest Place in Ludhiana">
-  <meta property="og:description" content="Handcrafted cakes, pastries & biscuits made with love in Ludhiana, Punjab.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://anshbakers.com/">
-  <meta property="og:image" content="https://anshbakers.com/images/og-image.jpg">
-
+  <title>Our Menu — Ansh Bakers</title>
+  <meta name="description" content="Explore the delicious menu at Ansh Bakers. Freshly baked biscuits, pastries, custom cakes, puff patties, and brownies in Ludhiana.">
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,32 +16,6 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Bakery",
-    "name": "Ansh Bakers",
-    "description": "Popular Indian bakery in Ludhiana known for blending traditional Indian flavors with modern baking.",
-    "url": "https://anshbakers.com",
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "1474/2, St no. 11, Kwality Rd, near matharoo chownk, Shimlapuri",
-      "addressLocality": "Ludhiana",
-      "addressRegion": "Punjab",
-      "postalCode": "141003",
-      "addressCountry": "IN"
-    },
-    "openingHoursSpecification": [
-      {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens": "07:00","closes": "21:00"},
-      {"@type": "OpeningHoursSpecification","dayOfWeek": "Sunday","opens": "07:00","closes": "20:00"}
-    ],
-    "servesCuisine": "Bakery",
-    "priceRange": "₹"
-  }
-  </script>
 
   <style>
     /* ═══════════════════════════════════════════
@@ -98,7 +61,7 @@
     }
 
     /* ═══════════════════════════════════════════
-       PAGE LOADER
+       PAGE LOADER (Optimized)
     ═══════════════════════════════════════════ */
     #page-loader {
       position: fixed; inset: 0; z-index: 9999;
@@ -106,7 +69,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 24px;
-      transition: opacity 0.6s var(--ease-smooth), visibility 0.6s;
+      transition: opacity 0.3s var(--ease-smooth), visibility 0.3s;
     }
     #page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
@@ -116,16 +79,16 @@
       color: var(--cream);
       letter-spacing: 0.02em;
       opacity: 0;
-      animation: loaderFadeIn 0.5s 0.2s forwards;
+      animation: loaderFadeIn 0.3s 0.1s forwards;
     }
     .loader-logo em { color: var(--gold); font-style: italic; }
 
     .dough-ring {
-      width: 56px; height: 56px;
+      width: 48px; height: 48px;
       border: 3px solid rgba(200,149,108,0.2);
       border-top-color: var(--gold);
       border-radius: 50%;
-      animation: spin 0.9s linear infinite;
+      animation: spin 0.7s linear infinite;
     }
     .loader-tagline {
       font-family: var(--font-label);
@@ -134,7 +97,7 @@
       text-transform: uppercase;
       color: var(--text-light);
       opacity: 0;
-      animation: loaderFadeIn 0.5s 0.5s forwards;
+      animation: loaderFadeIn 0.3s 0.2s forwards;
     }
 
     @keyframes spin { to { transform: rotate(360deg); } }
@@ -144,7 +107,7 @@
        NAVBAR
     ═══════════════════════════════════════════ */
     .nav-wrap {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1050; /* High Z-index */
       padding: 20px 0;
       transition: background 0.4s var(--ease-smooth), padding 0.4s, box-shadow 0.4s;
     }
@@ -168,7 +131,10 @@
       transition: color var(--transition);
       display: flex; align-items: center; gap: 8px;
     }
-    .nav-wrap.scrolled .nav-logo { color: var(--brown-deep); }
+    .nav-wrap.scrolled .nav-logo,
+    .nav-wrap.menu-open .nav-logo { color: var(--brown-deep); }
+    .nav-wrap.menu-open .nav-logo { color: var(--white); }
+    
     .nav-logo-icon {
       width: 32px; height: 32px;
       background: var(--gold);
@@ -219,7 +185,6 @@
       box-shadow: 0 8px 20px rgba(200,149,108,0.4);
     }
 
-    /* Hamburger */
     .ham-btn {
       display: none; flex-direction: column; justify-content: space-between;
       width: 24px; height: 17px; cursor: pointer;
@@ -230,14 +195,13 @@
       border-radius: 2px;
       transition: var(--transition);
     }
-    .nav-wrap.scrolled .ham-btn span { background: var(--brown-deep); }
+    .nav-wrap.scrolled:not(.menu-open) .ham-btn span { background: var(--brown-deep); }
     .ham-btn.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
     .ham-btn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .ham-btn.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-    /* Mobile menu */
     .mobile-menu {
-      position: fixed; inset: 0; z-index: 900;
+      position: fixed; inset: 0; z-index: 1040; /* Below Navbar, ABOVE Sticky Nav */
       background: var(--brown-deep);
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
       opacity: 0; visibility: hidden;
@@ -264,328 +228,117 @@
     .mobile-menu-cta:hover { background: var(--brown-warm); }
 
     /* ═══════════════════════════════════════════
-       HERO
+       MENU HERO
     ═══════════════════════════════════════════ */
-    .hero {
+    .menu-hero {
       position: relative;
-      min-height: 100vh;
-      display: flex; align-items: center;
+      min-height: 60vh;
+      display: flex; align-items: center; justify-content: center;
       background: var(--brown-deep);
       overflow: hidden;
+      text-align: center;
+      padding-top: 80px;
     }
     .hero-parallax-bg {
       position: absolute; inset: -10%;
-      background: radial-gradient(ellipse at 60% 50%, #3D1C02 0%, #1a0a00 60%);
+      background: radial-gradient(ellipse at 50% 50%, #3D1C02 0%, #1a0a00 70%);
       will-change: transform;
     }
-
-    /* Particle canvas */
     #hero-canvas {
       position: absolute; inset: 0;
-      pointer-events: none;
-      opacity: 0.35;
+      pointer-events: none; opacity: 0.35;
     }
-
-    /* Decorative circles */
-    .hero-deco {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .hero-deco-1 {
-      width: 600px; height: 600px;
-      border: 1px solid rgba(200,149,108,0.08);
-      top: -150px; right: -100px;
-    }
-    .hero-deco-2 {
-      width: 400px; height: 400px;
-      border: 1px solid rgba(200,149,108,0.12);
-      bottom: -80px; right: 80px;
-    }
-    .hero-deco-3 {
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(200,149,108,0.08) 0%, transparent 70%);
-      top: 20%; left: 10%;
-    }
-
     .hero-inner {
       position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto;
-      padding: 140px 32px 80px;
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; gap: 60px;
+      padding: 0 32px;
+      opacity: 0; transform: translateY(30px);
+      animation: heroIn 0.9s 0.2s var(--ease-spring) forwards;
     }
-
-    .hero-left { opacity: 0; transform: translateY(30px); }
-    .hero-left.visible { animation: heroIn 0.9s 0.2s var(--ease-spring) forwards; }
-
-    @keyframes heroIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
 
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       font-family: var(--font-label);
-      font-size: 0.72rem; font-weight: 600;
+      font-size: 0.75rem; font-weight: 600;
       letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
-    .hero-eyebrow::before {
-      content: ''; display: block;
-      width: 28px; height: 1px;
-      background: var(--gold);
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--gold);
     }
-
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-size: clamp(3rem, 5vw, 5rem);
       font-weight: 700;
-      line-height: 1.05;
       color: var(--cream);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
-    .hero-title em {
-      font-style: italic; color: var(--gold);
-    }
-    .hero-title .line-accent {
-      display: block;
-      -webkit-text-stroke: 1.5px var(--gold);
-      color: transparent;
-    }
-
+    .hero-title em { font-style: italic; color: var(--gold); }
     .hero-desc {
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1.05rem; line-height: 1.7;
       color: rgba(255,248,240,0.65);
-      max-width: 440px;
-      margin-bottom: 40px;
+      max-width: 500px; margin: 0 auto;
     }
 
-    .hero-actions {
-      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: var(--gold);
-      color: var(--white);
-      padding: 16px 36px;
-      border-radius: 100px;
-      font-family: var(--font-label);
-      font-size: 0.82rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover {
-      background: var(--brown-warm);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(200,149,108,0.4);
-    }
-    .btn-ghost {
-      color: rgba(255,248,240,0.7);
-      padding: 16px 28px;
-      border-radius: 100px;
-      border: 1.5px solid rgba(255,248,240,0.2);
-      font-family: var(--font-label);
-      font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      transition: all var(--transition);
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-ghost:hover {
-      border-color: var(--gold); color: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    .hero-stats {
-      display: flex; gap: 32px; margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,248,240,0.1);
-    }
-    .hero-stat-num {
-      font-family: var(--font-display);
-      font-size: 2rem; font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .hero-stat-label {
-      font-size: 0.78rem;
-      color: rgba(255,248,240,0.45);
-      letter-spacing: 0.05em;
-      margin-top: 4px;
-    }
-
-    /* Hero image panel */
-    .hero-right {
-      position: relative;
-      opacity: 0; transform: translateY(30px) scale(0.97);
-    }
-    .hero-right.visible { animation: heroIn 0.9s 0.5s var(--ease-spring) forwards; }
-
-    .hero-image-frame {
-      position: relative;
-      border-radius: 28px;
-      overflow: hidden;
-      aspect-ratio: 3/4;
-      max-height: 580px;
-    }
-    .hero-image-frame img {
-      width: 100%; height: 100%; object-fit: cover;
-      transform: scale(1.05);
-      transition: transform 8s linear;
-    }
-    .hero-image-frame::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(26,10,0,0.5) 0%, transparent 50%);
-    }
-
-    .hero-badge {
-      position: absolute;
-      bottom: 28px; left: 28px; z-index: 2;
+    /* ═══════════════════════════════════════════
+       STICKY CATEGORY NAV
+    ═══════════════════════════════════════════ */
+    .menu-nav {
+      position: sticky; top: 68px; 
+      z-index: 990; /* BELOW the mobile menu (1040) */
       background: rgba(255,248,240,0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 14px 18px;
-      display: flex; align-items: center; gap: 12px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,149,108,0.15);
+      padding: 16px 0;
     }
-    .hero-badge-icon {
-      width: 42px; height: 42px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      color: var(--white);
+    .menu-nav ul {
+      display: flex; align-items: center; justify-content: center; gap: 32px;
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      overflow-x: auto; scrollbar-width: none;
     }
-    .hero-badge-text { line-height: 1.3; }
-    .hero-badge-title {
-      font-family: var(--font-display);
-      font-size: 0.95rem; font-weight: 600;
-      color: var(--brown-deep);
-    }
-    .hero-badge-sub {
-      font-size: 0.7rem; color: var(--text-light);
-      margin-top: 2px;
-    }
-
-    .hero-floating-tag {
-      position: absolute;
-      top: 28px; right: -16px; z-index: 2;
-      background: var(--gold);
-      color: var(--white);
-      border-radius: 100px;
-      padding: 8px 16px;
+    .menu-nav ul::-webkit-scrollbar { display: none; }
+    .menu-nav a {
       font-family: var(--font-label);
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      animation: floatTag 3s ease-in-out infinite;
-    }
-    @keyframes floatTag {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .hero-scroll-hint {
-      position: absolute;
-      bottom: 32px; left: 50%;
-      transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      opacity: 0.5;
-      animation: scrollBounce 2s ease-in-out infinite;
-    }
-    .hero-scroll-hint span {
-      font-family: var(--font-label);
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--cream);
-    }
-    .scroll-arrow {
-      width: 20px; height: 20px;
-      border-right: 2px solid var(--cream);
-      border-bottom: 2px solid var(--cream);
-      transform: rotate(45deg);
-    }
-    @keyframes scrollBounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
-    }
-
-    /* ═══════════════════════════════════════════
-       MARQUEE
-    ═══════════════════════════════════════════ */
-    .marquee-wrap {
-      background: var(--gold);
-      padding: 14px 0;
-      overflow: hidden;
-      position: relative;
-    }
-    .marquee-track {
-      display: flex; align-items: center;
-      animation: marquee 22s linear infinite;
-      width: max-content;
-    }
-    .marquee-item {
-      display: flex; align-items: center; gap: 12px;
-      padding: 0 40px;
-      font-family: var(--font-label);
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--white);
-      white-space: nowrap;
-    }
-    .marquee-dot {
-      width: 5px; height: 5px;
-      background: rgba(255,255,255,0.5);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ═══════════════════════════════════════════
-       SECTION SHARED
-    ═══════════════════════════════════════════ */
-    .section {
-      padding: 100px 0;
-    }
-    .container {
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    .section-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: var(--font-label);
-      font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
-    }
-    .section-eyebrow::before {
-      content: ''; display: block;
-      width: 20px; height: 1px;
-      background: var(--gold);
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      color: var(--brown-deep);
-      line-height: 1.15;
-    }
-    .section-title em { font-style: italic; color: var(--gold); }
-
-    .section-subtitle {
-      font-size: 1rem; line-height: 1.7;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--text-light);
-      max-width: 540px;
-      margin-top: 12px;
+      white-space: nowrap;
+      padding: 8px 16px;
+      border-radius: 100px;
+      transition: all var(--transition);
+    }
+    .menu-nav a:hover, .menu-nav a.active {
+      background: var(--gold); color: var(--white);
     }
 
-    /* Scroll reveal */
+    /* ═══════════════════════════════════════════
+       MENU LAYOUT & GRIDS
+    ═══════════════════════════════════════════ */
+    .menu-section { padding: 100px 0; }
+    .bg-cream { background: var(--cream); }
+    .bg-cream-light { background: var(--cream-light); }
+    .bg-blush { background: var(--blush); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .menu-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 80px; align-items: center;
+    }
+    .menu-grid.reverse { grid-template-columns: 1.2fr 1fr; }
+    
+    .menu-image-wrapper {
+      position: relative; border-radius: 24px; overflow: hidden;
+      aspect-ratio: 4/4; background: var(--white);
+      box-shadow: 0 20px 40px rgba(200,149,108,0.1);
+      display: flex; align-items: center; justify-content: center; padding: 40px;
+    }
+    .menu-image-wrapper img {
+      width: 100%; height: 100%; object-fit: contain; transition: transform 0.8s var(--ease-smooth);
+    }
+    .menu-image-wrapper:hover img { transform: scale(1.05); }
+    
     .reveal {
       opacity: 0; transform: translateY(40px);
       transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
@@ -593,664 +346,96 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ═══════════════════════════════════════════
-       ABOUT SECTION
-    ═══════════════════════════════════════════ */
-    .about-section {
-      background: var(--cream-light);
+    .menu-category-title {
+      font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 3.2rem);
+      font-weight: 700; color: var(--brown-deep); line-height: 1.1; margin-bottom: 12px;
     }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-    }
-    .about-images {
-      position: relative;
-      height: 520px;
-    }
-    .about-img-main {
-      position: absolute;
-      top: 0; left: 0;
-      width: 72%; height: 85%;
-      border-radius: 24px;
-      overflow: hidden;
-    }
-    .about-img-main img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.8s var(--ease-smooth);
-    }
-    .about-img-main:hover img { transform: scale(1.04); }
-
-    .about-img-accent {
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 58%; height: 62%;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 6px solid var(--cream-light);
-    }
-    .about-img-accent img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.8s var(--ease-smooth);
-    }
-    .about-img-accent:hover img { transform: scale(1.04); }
-
-    .about-years-badge {
-      position: absolute;
-      top: 55%; left: 42%;
-      transform: translate(-50%, -50%);
-      width: 88px; height: 88px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: var(--white);
-      border: 4px solid var(--cream-light);
-      z-index: 2;
-    }
-    .about-years-badge .num {
-      font-family: var(--font-display);
-      font-size: 1.8rem; font-weight: 700; line-height: 1;
-    }
-    .about-years-badge .label {
-      font-family: var(--font-label);
-      font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase;
-      margin-top: 2px;
+    .menu-category-note {
+      display: inline-block; font-family: var(--font-label); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+      padding: 6px 14px; border: 1px solid rgba(200,149,108,0.4);
+      border-radius: 100px; margin-bottom: 40px; background: var(--white);
     }
 
-    .about-content { }
-    .about-highlights {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 16px; margin-top: 36px;
-    }
-    .highlight-chip {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 16px;
-      background: var(--white);
-      border-radius: 16px;
-      border: 1px solid rgba(200,149,108,0.15);
-      transition: box-shadow var(--transition), transform var(--transition);
-    }
-    .highlight-chip:hover {
-      box-shadow: 0 8px 24px rgba(200,149,108,0.12);
-      transform: translateY(-3px);
-    }
-    .chip-icon {
-      font-size: 1.15rem; flex-shrink: 0;
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--blush); border-radius: 10px;
-      color: var(--gold);
-    }
-    .chip-text .chip-title {
-      font-weight: 600; font-size: 0.88rem; color: var(--brown-deep);
-    }
-    .chip-text .chip-sub {
-      font-size: 0.75rem; color: var(--text-light); margin-top: 2px;
-    }
-
-    .hours-box {
-      background: var(--brown-deep);
-      border-radius: 20px;
-      padding: 24px 28px;
-      margin-top: 24px;
-      display: flex; gap: 32px; flex-wrap: wrap;
-    }
-    .hours-item { }
-    .hours-days {
-      font-family: var(--font-label);
-      font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 4px;
-    }
-    .hours-time {
-      font-family: var(--font-display);
-      font-size: 1.1rem; font-weight: 600;
-      color: var(--cream);
-    }
-
-    /* ═══════════════════════════════════════════
-       QUALITY STRIP
-    ═══════════════════════════════════════════ */
-    .quality-section {
-      background: var(--brown-deep);
-      padding: 80px 0;
-    }
-    .quality-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: rgba(255,255,255,0.06);
-      border-radius: 24px; overflow: hidden;
-    }
-    .quality-item {
-      padding: 40px 30px;
-      background: rgba(61,28,2,0.4);
-      text-align: center;
-      transition: background var(--transition);
-    }
-    .quality-item:hover { background: rgba(200,149,108,0.12); }
-    .quality-icon {
-      font-size: 2rem; margin-bottom: 16px;
-      color: var(--gold);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .quality-title {
-      font-family: var(--font-display);
-      font-size: 1.1rem; font-weight: 600;
-      color: var(--cream); margin-bottom: 8px;
-    }
-    .quality-desc {
-      font-size: 0.82rem; line-height: 1.6;
-      color: rgba(255,248,240,0.45);
-    }
-
-    /* ═══════════════════════════════════════════
-       GALLERY
-    ═══════════════════════════════════════════ */
-    .gallery-section { background: var(--cream); }
-
-    .gallery-tabs {
-      display: flex; align-items: center; gap: 8px;
-      margin-top: 32px; margin-bottom: 48px;
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      padding: 10px 22px;
-      border-radius: 100px;
-      border: 1.5px solid rgba(200,149,108,0.25);
-      font-family: var(--font-label);
-      font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-light);
-      transition: all var(--transition);
-    }
-    .tab-btn:hover, .tab-btn.active {
-      background: var(--gold); color: var(--white);
-      border-color: var(--gold);
-    }
-
-    /* Auto-scrolling slider */
-    .slider-section { margin-bottom: 16px; }
-    .slider-label {
-      font-family: var(--font-label);
-      font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 12px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .slider-label::after {
-      content: ''; flex: 1; height: 1px;
-      background: rgba(200,149,108,0.2);
-    }
-
-    .auto-slider {
-      position: relative; overflow: hidden;
-      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    }
-    .auto-slider-track {
-      display: flex; gap: 16px;
-      animation: autoScroll 22s linear infinite;
-      width: max-content;
-    }
-    .auto-slider[data-reverse="true"] .auto-slider-track {
-      animation: autoScrollRev 22s linear infinite;
-    }
-    .auto-slider:hover .auto-slider-track { animation-play-state: paused; }
-
-    @keyframes autoScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-    @keyframes autoScrollRev {
-      from { transform: translateX(-50%); }
-      to { transform: translateX(0); }
-    }
-
-    .slide-item {
-      width: 220px; height: 220px;
-      border-radius: 20px; overflow: hidden;
-      flex-shrink: 0; position: relative;
-      cursor: pointer;
-    }
-    .slide-item img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.5s var(--ease-smooth);
-    }
-    .slide-item:hover img { transform: scale(1.08); }
-    .slide-item::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(26,10,0,0.4) 0%, transparent 60%);
-      opacity: 0; transition: opacity var(--transition);
-    }
-    .slide-item:hover::after { opacity: 1; }
-
-    /* Skeleton loader for slides */
-    .slide-skeleton {
-      width: 220px; height: 220px;
-      border-radius: 20px; flex-shrink: 0;
-      background: linear-gradient(90deg, #e8ddd5 25%, #f0e6de 50%, #e8ddd5 75%);
-      background-size: 400% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: 100% 0; }
-      100% { background-position: -100% 0; }
-    }
-
-    /* ═══════════════════════════════════════════
-       MENU PREVIEW
-    ═══════════════════════════════════════════ */
-    .menu-section { background: var(--blush); }
-    .menu-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      margin-bottom: 48px; flex-wrap: wrap; gap: 20px;
-    }
-    .menu-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .menu-card {
-      background: var(--white);
-      border-radius: 24px;
-      overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .menu-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(200,149,108,0.18);
-    }
-    .menu-card-img {
-      height: 200px; overflow: hidden; position: relative;
-    }
-    .menu-card-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.6s var(--ease-smooth);
-    }
-    .menu-card:hover .menu-card-img img { transform: scale(1.06); }
-    .menu-card-tag {
-      position: absolute; top: 14px; left: 14px;
-      background: var(--gold);
-      color: var(--white);
-      padding: 4px 12px;
-      border-radius: 100px;
-      font-family: var(--font-label);
-      font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .menu-card-body { padding: 20px 22px 24px; }
-    .menu-card-name {
-      font-family: var(--font-display);
-      font-size: 1.2rem; font-weight: 600;
-      color: var(--brown-deep);
-      margin-bottom: 6px;
-    }
-    .menu-card-desc {
-      font-size: 0.82rem; line-height: 1.6;
-      color: var(--text-light);
-      margin-bottom: 16px;
-    }
-    .menu-card-footer {
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .menu-card-price {
-      font-family: var(--font-display);
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--gold);
-    }
-    .menu-card-btn {
-      width: 36px; height: 36px;
-      background: var(--blush);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; color: var(--gold);
-      transition: background var(--transition), transform var(--transition);
-    }
-    .menu-card-btn:hover {
-      background: var(--gold); color: var(--white);
-      transform: scale(1.1);
-    }
-
-    /* Skeleton cards */
-    .menu-card-skeleton {
-      background: var(--white);
-      border-radius: 24px; overflow: hidden;
-    }
-    .skel-img {
-      height: 200px;
-      background: linear-gradient(90deg, #e8ddd5 25%, #f0e6de 50%, #e8ddd5 75%);
-      background-size: 400% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    .skel-body { padding: 20px 22px; }
-    .skel-line {
-      height: 14px; border-radius: 7px;
-      background: linear-gradient(90deg, #e8ddd5 25%, #f0e6de 50%, #e8ddd5 75%);
-      background-size: 400% 100%;
-      animation: shimmer 1.5s infinite;
-      margin-bottom: 10px;
-    }
-    .skel-line.short { width: 60%; }
-    .skel-line.mid { width: 80%; }
-    .skel-line.long { width: 100%; }
-
-    /* ═══════════════════════════════════════════
-       ORDER SECTION (CTA)
-    ═══════════════════════════════════════════ */
-    .order-section {
-      background: var(--brown-deep);
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .order-bg-deco {
-      position: absolute; inset: 0; pointer-events: none;
-    }
-    .order-bg-deco::before {
-      content: '';
-      position: absolute;
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(200,149,108,0.07) 0%, transparent 70%);
-      top: -200px; right: -200px;
-    }
-    .order-inner {
-      position: relative; z-index: 1;
-      text-align: center;
-    }
-    .order-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    .order-title em { font-style: italic; color: var(--gold); }
-    .order-desc {
-      font-size: 1rem; line-height: 1.7;
-      color: rgba(255,248,240,0.55);
-      max-width: 500px; margin: 0 auto 40px;
-    }
-    .order-btns {
-      display: flex; align-items: center; justify-content: center;
-      gap: 16px; flex-wrap: wrap;
-    }
-    .order-platform-btn {
-      display: flex; align-items: center; gap: 10px;
-      padding: 14px 28px;
-      background: rgba(255,248,240,0.07);
-      border: 1.5px solid rgba(255,248,240,0.15);
-      border-radius: 100px;
-      color: var(--cream);
-      font-family: var(--font-label);
-      font-size: 0.8rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      transition: all var(--transition);
-    }
-    .order-platform-btn:hover {
-      background: rgba(200,149,108,0.2);
-      border-color: var(--gold); color: var(--gold);
-      transform: translateY(-3px);
-    }
-    .platform-logo {
-      width: 20px; height: 20px;
-      border-radius: 4px; object-fit: contain;
-    }
-
-    /* ═══════════════════════════════════════════
-       TESTIMONIALS
-    ═══════════════════════════════════════════ */
-    .testimonials-section { background: var(--cream-light); }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px; margin-top: 48px;
-    }
-    .testimonial-card {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 28px;
-      border: 1px solid rgba(200,149,108,0.12);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .testimonial-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(200,149,108,0.12);
-    }
-    .stars {
-      color: var(--gold);
-      font-size: 0.85rem;
-      margin-bottom: 14px;
-      display: flex; gap: 3px;
-    }
-    .testimonial-text {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 0.98rem;
-      line-height: 1.65;
-      color: var(--text-mid);
-      margin-bottom: 20px;
-    }
-    .testimonial-author {
-      display: flex; align-items: center; gap: 12px;
-    }
-    .author-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      background: var(--blush);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-    .author-name {
-      font-weight: 600; font-size: 0.88rem; color: var(--brown-deep);
-    }
-    .author-tag {
-      font-size: 0.72rem; color: var(--text-light); margin-top: 2px;
-    }
-
-    /* ═══════════════════════════════════════════
-       CONTACT / VISIT US
-    ═══════════════════════════════════════════ */
-    .visit-section { background: var(--cream); }
-    .visit-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: start;
-    }
-    .visit-info { }
-    .contact-items { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
-    .contact-item {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 18px 20px;
-      background: var(--cream-light);
-      border-radius: 16px;
-      border: 1px solid rgba(200,149,108,0.15);
-    }
-    .contact-item-icon {
-      width: 42px; height: 42px;
-      background: var(--gold);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; flex-shrink: 0;
-      color: var(--white);
-    }
-    .contact-item-title {
-      font-family: var(--font-label);
-      font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-light); margin-bottom: 4px;
-    }
-    .contact-item-body {
-      font-size: 0.88rem; line-height: 1.5;
-      color: var(--brown-deep); font-weight: 500;
-    }
-
-    .social-row {
-      display: flex; gap: 12px; margin-top: 28px;
-    }
-    .social-btn {
-      width: 44px; height: 44px;
-      background: var(--cream-light);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      border: 1.5px solid rgba(200,149,108,0.2);
-      transition: all var(--transition);
-    }
-    .social-btn:hover {
-      background: var(--gold); color: var(--white);
-      border-color: var(--gold);
-      transform: translateY(-3px);
-    }
-
-    .map-placeholder {
-      width: 100%; aspect-ratio: 4/3;
-      border-radius: 24px; overflow: hidden;
-      background: #e8ddd5;
-      position: relative;
-    }
-    .map-placeholder iframe {
-      width: 100%; height: 100%; border: none;
-    }
-    .map-card {
-      position: absolute; bottom: 20px; left: 20px;
-      background: var(--white);
-      border-radius: 16px;
-      padding: 14px 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
-    .map-card-name {
-      font-family: var(--font-display);
-      font-size: 0.95rem; font-weight: 600;
-      color: var(--brown-deep);
-    }
-    .map-card-sub {
-      font-size: 0.72rem; color: var(--text-light); margin-top: 3px;
+    .menu-list { display: flex; flex-direction: column; gap: 20px; }
+    .menu-item { display: flex; align-items: flex-end; width: 100%; }
+    .menu-item-name {
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 600;
+      color: var(--brown-deep); margin-bottom: -4px;
+    }
+    .menu-item-dots {
+      flex-grow: 1; border-bottom: 2px dotted rgba(200,149,108,0.3); margin: 0 16px 4px 16px;
+    }
+    .menu-item-price {
+      font-family: var(--font-label); font-size: 1.05rem; font-weight: 700;
+      color: var(--gold); margin-bottom: -4px;
     }
 
     /* ═══════════════════════════════════════════
        FOOTER
     ═══════════════════════════════════════════ */
-    footer {
-      background: var(--brown-deep);
-      padding: 80px 0 32px;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px; margin-bottom: 60px;
-    }
-    .footer-brand { }
+    footer { background: var(--brown-deep); padding: 80px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
     .footer-logo-text {
-      font-family: var(--font-display);
-      font-size: 1.8rem; font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 14px;
-      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
     }
     .footer-logo-icon {
-      width: 38px; height: 38px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
+      width: 38px; height: 38px; background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
     }
-    .footer-tagline {
-      font-size: 0.88rem; line-height: 1.65;
-      color: rgba(255,248,240,0.4);
-      max-width: 280px;
-    }
+    .footer-tagline { font-size: 0.88rem; line-height: 1.65; color: rgba(255,248,240,0.4); max-width: 280px; }
     .footer-col h3 {
-      font-family: var(--font-label);
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
+      font-family: var(--font-label); font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
     }
     .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li a {
-      font-size: 0.88rem; color: rgba(255,248,240,0.5);
-      transition: color var(--transition);
-    }
+    .footer-col ul li a { font-size: 0.88rem; color: rgba(255,248,240,0.5); transition: color var(--transition); }
     .footer-col ul li a:hover { color: var(--cream); }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding-top: 28px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 28px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }
-    .footer-copy {
-      font-size: 0.8rem; color: rgba(255,248,240,0.3);
-    }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,248,240,0.3); }
     .footer-copy b { color: rgba(255,248,240,0.55); }
-    .footer-address {
-      font-size: 0.75rem; color: rgba(255,248,240,0.3);
-      display: flex; align-items: center; gap: 6px;
-    }
+    .footer-address { font-size: 0.75rem; color: rgba(255,248,240,0.3); display: flex; align-items: center; gap: 6px; }
 
-    /* ═══════════════════════════════════════════
-       PARALLAX HELPER
-    ═══════════════════════════════════════════ */
-    .parallax-element { will-change: transform; }
+    /* Back to Top */
+    .back-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 500;
+      width: 46px; height: 46px; background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 1.1rem; opacity: 0; visibility: hidden;
+      transform: translateY(16px); transition: all var(--transition);
+      box-shadow: 0 4px 16px rgba(200,149,108,0.4);
+    }
+    .back-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .back-top:hover { background: var(--brown-warm); transform: translateY(-3px); }
 
     /* ═══════════════════════════════════════════
        RESPONSIVE
     ═══════════════════════════════════════════ */
     @media (max-width: 1024px) {
-      .menu-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .quality-grid { grid-template-columns: repeat(2, 1fr); }
+      .menu-grid, .menu-grid.reverse { grid-template-columns: 1fr; gap: 40px; }
+      .menu-grid.reverse .menu-image-wrapper { grid-row: 1; }
     }
-
     @media (max-width: 768px) {
       .nav-links, .nav-cta { display: none; }
       .ham-btn { display: flex; }
-
-      .hero-inner { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 40px; }
-      .hero-right { display: none; }
-      .hero-title { font-size: 2.8rem; }
-
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-images { height: 320px; }
-
-      .menu-grid { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .visit-grid { grid-template-columns: 1fr; }
-
+      .menu-nav ul { justify-content: flex-start; }
       .footer-grid { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; text-align: center; }
-
-      .quality-grid { grid-template-columns: 1fr 1fr; }
-
-      .section { padding: 64px 0; }
+      .menu-section { padding: 64px 0; }
+      .menu-image-wrapper { padding: 20px; }
     }
-
     @media (max-width: 480px) {
-      .hero-stats { gap: 20px; }
-      .about-highlights { grid-template-columns: 1fr; }
-      .quality-grid { grid-template-columns: 1fr; }
-      .order-title { font-size: 2.2rem; }
+      .menu-item-name { font-size: 1.1rem; }
+      .menu-item-price { font-size: 0.95rem; }
+      .menu-category-title { font-size: 2.2rem; }
     }
-
-    /* ═══════════════════════════════════════════
-       BACK TO TOP
-    ═══════════════════════════════════════════ */
-    .back-top {
-      position: fixed; bottom: 28px; right: 28px; z-index: 500;
-      width: 46px; height: 46px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--white); font-size: 1.1rem;
-      opacity: 0; visibility: hidden;
-      transform: translateY(16px);
-      transition: all var(--transition);
-      box-shadow: 0 4px 16px rgba(200,149,108,0.4);
-    }
-    .back-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
-    .back-top:hover { background: var(--brown-warm); transform: translateY(-3px); }
   </style>
 </head>
 <body>
@@ -1271,9 +456,9 @@
       </a>
       <nav role="navigation" aria-label="Main navigation">
         <ul class="nav-links">
-          <li><a href="#about" class="active">About</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="menu.html">Menu</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="menu.html" class="active">Menu</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="order.html" class="nav-cta">Order Now</a></li>
         </ul>
@@ -1286,162 +471,101 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
-    <a href="#about" class="mob-link">About</a>
-    <a href="#gallery" class="mob-link">Gallery</a>
+    <a href="index.html#about" class="mob-link">About</a>
+    <a href="index.html#gallery" class="mob-link">Gallery</a>
     <a href="menu.html" class="mob-link">Menu</a>
     <a href="contact.html" class="mob-link">Contact</a>
     <a href="order.html" class="mobile-menu-cta">Order Now →</a>
   </div>
 
   <!-- ════ HERO ════ -->
-  <section class="hero" aria-label="Welcome to Ansh Bakers">
+  <section class="menu-hero" aria-label="Menu Header">
     <div class="hero-parallax-bg" id="hero-bg"></div>
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
-    <div class="hero-deco hero-deco-1" aria-hidden="true"></div>
-    <div class="hero-deco hero-deco-2" aria-hidden="true"></div>
-    <div class="hero-deco hero-deco-3" aria-hidden="true"></div>
-
+    
     <div class="hero-inner">
-      <div class="hero-left" id="hero-left">
-        <div class="hero-eyebrow">Est. Ludhiana, Punjab</div>
-        <h1 class="hero-title">
-          Baked with <em>Love</em>,
-          <span class="line-accent">Served Fresh</span>
-        </h1>
-        <p class="hero-desc">Handcrafted sweets, artisan pastries, and custom cakes made with the finest ingredients. Where every bite tells a story of tradition and care.</p>
-        <div class="hero-actions">
-          <a href="order.html" class="btn-primary">
-            Order Now
-            <i class="bi bi-arrow-right" style="font-size:0.85rem;"></i>
-          </a>
-          <a href="#gallery" class="btn-ghost">
-            View Gallery
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div>
-            <div class="hero-stat-num">500+</div>
-            <div class="hero-stat-label">Happy customers daily</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">50+</div>
-            <div class="hero-stat-label">Menu items</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">4.8★</div>
-            <div class="hero-stat-label">Zomato & Swiggy rating</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-right" id="hero-right">
-        <div class="hero-floating-tag"><i class="bi bi-stars"></i> Custom Orders Open</div>
-        <div class="hero-image-frame">
-          <img
-            src="images/pexels-abhinavcoca-291528.jpg"
-            alt="Freshly baked goods at Ansh Bakers"
-            loading="eager"
-            fetchpriority="high"
-            width="480" height="580"
-          >
-        </div>
-        <div class="hero-badge">
-          <div class="hero-badge-icon"><i class="bi bi-cake2-fill"></i></div>
-          <div class="hero-badge-text">
-            <div class="hero-badge-title">Custom Cakes</div>
-            <div class="hero-badge-sub">Order 24 hrs in advance</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-scroll-hint" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="scroll-arrow"></div>
+      <div class="hero-eyebrow">Handcrafted Delights</div>
+      <h1 class="hero-title">Our <em>Menu</em></h1>
+      <p class="hero-desc">From our signature buttery biscuits to custom celebration cakes, discover the treats that make Ludhiana a little sweeter.</p>
     </div>
   </section>
 
-  <!-- ════ MARQUEE ════ -->
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track" id="marquee-track">
-      <!-- duplicated for seamless loop -->
-    </div>
-  </div>
+  <!-- ════ STICKY CATEGORY NAV ════ -->
+  <nav class="menu-nav" aria-label="Menu Categories">
+    <ul>
+      <li><a href="#biscuits" class="menu-link active">Biscuits</a></li>
+      <li><a href="#patties" class="menu-link">Puff Patties</a></li>
+      <li><a href="#pastries-cakes" class="menu-link">Pastries & Cakes</a></li>
+      <li><a href="#brownies" class="menu-link">Brownies</a></li>
+    </ul>
+  </nav>
 
-  <!-- ════ ABOUT ════ -->
-  <section class="section about-section" id="about" aria-labelledby="about-title">
+  <!-- ════ BISCUITS SECTION ════ -->
+  <section class="menu-section bg-cream" id="biscuits">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-images reveal" aria-hidden="true">
-          <div class="about-img-main parallax-element" data-speed="0.06">
-            <img
-              src="images/pexels-chudesabyvaut-1351350-3250406.jpg"
-              alt="Artisan baking at Ansh Bakers"
-              loading="lazy" width="400" height="440"
-            >
-          </div>
-          <div class="about-img-accent">
-            <img
-              src="images/pexels-abhinavcoca-291528.jpg"
-              alt="Fresh pastries at Ansh Bakers"
-              loading="lazy" width="300" height="320"
-            >
-          </div>
-          <div class="about-years-badge" aria-label="Years of excellence">
-            <span class="num">10+</span>
-            <span class="label">Years</span>
-          </div>
+      <div class="menu-grid">
+        <div class="menu-image-wrapper reveal">
+          <img src="images/chocolate-cookies-cartoon-icon-illustration-food-snack-icon-concept-isolated-flat-cartoon-style 1.png" alt="Fresh Biscuits" loading="lazy">
         </div>
-
-        <div class="about-content">
-          <div class="section-eyebrow reveal">Our Story</div>
-          <h2 id="about-title" class="section-title reveal reveal-delay-1">
-            A Bakery <em>Rooted</em> in<br>Ludhiana's Heart
-          </h2>
-          <p class="section-subtitle reveal reveal-delay-2">
-            Ansh Bakers is a beloved institution on Shimlapuri's Kwality Road — blending cherished Indian flavors with modern artisan baking techniques. Every item is made fresh, daily, with ingredients we'd serve our own family.
-          </p>
-
-          <div class="about-highlights reveal reveal-delay-3">
-            <div class="highlight-chip">
-              <div class="chip-icon"><i class="bi bi-flower1"></i></div>
-              <div class="chip-text">
-                <div class="chip-title">Premium Ingredients</div>
-                <div class="chip-sub">Sourced fresh every morning</div>
-              </div>
+        <div class="menu-content reveal reveal-delay-1">
+          <h2 class="menu-category-title">Premium <em>Biscuits</em></h2>
+          <div class="menu-category-note"><i class="bi bi-tag-fill"></i> Price per 300gm</div>
+          
+          <div class="menu-list">
+            <div class="menu-item">
+              <div class="menu-item-name">Atta Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
             </div>
-            <div class="highlight-chip">
-              <div class="chip-icon"><i class="bi bi-person-badge-fill"></i></div>
-              <div class="chip-text">
-                <div class="chip-title">Expert Bakers</div>
-                <div class="chip-sub">Trained with decades of craft</div>
-              </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Jaggery Atta Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
             </div>
-            <div class="highlight-chip">
-              <div class="chip-icon"><i class="bi bi-cake-fill"></i></div>
-              <div class="chip-text">
-                <div class="chip-title">Custom Orders</div>
-                <div class="chip-sub">Tailored cakes for every occasion</div>
-              </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Chocolate Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
             </div>
-            <div class="highlight-chip">
-              <div class="chip-icon"><i class="bi bi-scooter"></i></div>
-              <div class="chip-text">
-                <div class="chip-title">Delivery Available</div>
-                <div class="chip-sub">Zomato &amp; Swiggy</div>
-              </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Butter Jam Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
             </div>
-          </div>
-
-          <div class="hours-box reveal reveal-delay-4">
-            <div class="hours-item">
-              <div class="hours-days">Mon – Sat</div>
-              <div class="hours-time">7:00 AM – 9:00 PM</div>
+            <div class="menu-item">
+              <div class="menu-item-name">Jeera Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
             </div>
-            <div class="hours-item">
-              <div class="hours-days">Sunday</div>
-              <div class="hours-time">7:00 AM – 8:00 PM</div>
+            <div class="menu-item">
+              <div class="menu-item-name">Ajwain Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Tutty Fruity Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Cherry Peanut Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Mango Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Peanut Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Coconut Biscuits</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹55</div>
             </div>
           </div>
         </div>
@@ -1449,259 +573,106 @@
     </div>
   </section>
 
-  <!-- ════ QUALITY PILLARS ════ -->
-  <section class="quality-section" aria-labelledby="quality-title">
+  <!-- ════ PUFF PATTIES SECTION ════ -->
+  <section class="menu-section bg-cream-light" id="patties">
     <div class="container">
-      <div style="text-align:center;margin-bottom:48px;">
-        <div class="section-eyebrow reveal" style="justify-content:center;color:var(--rose);">
-          Our Promise
+      <div class="menu-grid reverse">
+        <div class="menu-content reveal">
+          <h2 class="menu-category-title">Savory <em>Patties</em></h2>
+          <div class="menu-category-note"><i class="bi bi-fire"></i> Baked Fresh Daily</div>
+          
+          <div class="menu-list">
+            <div class="menu-item">
+              <div class="menu-item-name">Aloo Patties</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹20</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Cheese Chilly Patties</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹30</div>
+            </div>
+          </div>
         </div>
-        <h2 id="quality-title" class="section-title reveal reveal-delay-1" style="color:var(--cream);text-align:center;">
-          Why Choose <em>Us?</em>
-        </h2>
-      </div>
-      <div class="quality-grid reveal reveal-delay-2">
-        <div class="quality-item">
-          <div class="quality-icon"><i class="bi bi-patch-check-fill"></i></div>
-          <div class="quality-title">No Preservatives</div>
-          <div class="quality-desc">Everything baked fresh daily — zero artificial additives or preservatives, ever.</div>
-        </div>
-        <div class="quality-item">
-          <div class="quality-icon"><i class="bi bi-palette-fill"></i></div>
-          <div class="quality-title">Custom Designs</div>
-          <div class="quality-desc">From birthdays to weddings, every custom cake is a one-of-a-kind edible masterpiece.</div>
-        </div>
-        <div class="quality-item">
-          <div class="quality-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-          <div class="quality-title">Same-Day Ready</div>
-          <div class="quality-desc">Most items available same day — call ahead for guaranteed availability.</div>
-        </div>
-        <div class="quality-item">
-          <div class="quality-icon"><i class="bi bi-trophy-fill"></i></div>
-          <div class="quality-title">4.8★ Rated</div>
-          <div class="quality-desc">Consistently top-rated on Zomato and Swiggy across hundreds of reviews.</div>
+        <div class="menu-image-wrapper reveal reveal-delay-1">
+          <img src="images/puff-pastry-buns-tasty-golden-600nw-2122251647.webp" alt="Puff Patties" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ════ GALLERY ════ -->
-  <section class="section gallery-section" id="gallery" aria-labelledby="gallery-title">
+  <!-- ════ PASTRIES & CAKES SECTION ════ -->
+  <section class="menu-section bg-blush" id="pastries-cakes">
     <div class="container">
-      <div class="section-eyebrow reveal">Food Gallery</div>
-      <h2 id="gallery-title" class="section-title reveal reveal-delay-1">
-        Fresh from the <em>Oven</em>
-      </h2>
-    </div>
-
-    <div style="margin-top:48px;">
-      <div class="container">
-        <div class="slider-label">Biscuits Collection</div>
-      </div>
-      <div class="auto-slider" id="slider-biscuits">
-        <div class="auto-slider-track" id="track-biscuits">
-          <!-- Skeleton placeholders shown until images load -->
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
+      <div class="menu-grid">
+        <div class="menu-image-wrapper reveal">
+          <img src="images/red-velvet-cake-concept-illustration.png" alt="Cakes & Pastries" loading="lazy">
         </div>
-      </div>
+        <div class="menu-content reveal reveal-delay-1">
+          <h2 class="menu-category-title">Artisan <em>Pastries</em></h2>
+          <div class="menu-category-note"><i class="bi bi-star-fill"></i> Per Piece</div>
+          
+          <div class="menu-list" style="margin-bottom: 48px;">
+            <div class="menu-item">
+              <div class="menu-item-name">White Forest Pastry</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹25</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Chocolate Pastry</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹25</div>
+            </div>
+          </div>
 
-      <div class="container" style="margin-top:32px;">
-        <div class="slider-label">Custom Cakes</div>
-      </div>
-      <div class="auto-slider" data-reverse="true" id="slider-cakes">
-        <div class="auto-slider-track" id="track-cakes">
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-        </div>
-      </div>
-
-      <div class="container" style="margin-top:32px;">
-        <div class="slider-label">Ice Cream Range</div>
-      </div>
-      <div class="auto-slider" id="slider-icecream">
-        <div class="auto-slider-track" id="track-icecream">
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
-          <div class="slide-skeleton"></div>
+          <h2 class="menu-category-title">Celebration <em>Cakes</em></h2>
+          <div class="menu-category-note"><i class="bi bi-cake2"></i> Price per 1 Kg</div>
+          
+          <div class="menu-list">
+            <div class="menu-item">
+              <div class="menu-item-name">Black Forest</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹420</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Jelly Cake</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹440</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Custom Designed Cake</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹550</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ════ MENU PREVIEW ════ -->
-  <section class="section menu-section" id="menu" aria-labelledby="menu-title">
+  <!-- ════ BROWNIES SECTION ════ -->
+  <section class="menu-section bg-cream" id="brownies">
     <div class="container">
-      <div class="menu-header">
-        <div>
-          <div class="section-eyebrow reveal">Our Menu</div>
-          <h2 id="menu-title" class="section-title reveal reveal-delay-1">
-            Crafted to <em>Delight</em>
-          </h2>
-        </div>
-        <a href="menu.html" class="btn-primary reveal reveal-delay-2" style="margin-bottom:4px;">
-          Full Menu
-          <i class="bi bi-arrow-right" style="font-size:0.85rem;"></i>
-        </a>
-      </div>
-
-      <div class="menu-grid" id="menu-grid">
-        <!-- Skeleton while loading -->
-        <div class="menu-card-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line long"></div><div class="skel-line mid"></div><div class="skel-line short"></div></div></div>
-        <div class="menu-card-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line long"></div><div class="skel-line mid"></div><div class="skel-line short"></div></div></div>
-        <div class="menu-card-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line long"></div><div class="skel-line mid"></div><div class="skel-line short"></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════ ORDER CTA ════ -->
-  <section class="order-section" aria-labelledby="order-title">
-    <div class="order-bg-deco" aria-hidden="true"></div>
-    <div class="container order-inner">
-      <div class="section-eyebrow reveal" style="justify-content:center;color:var(--rose);">
-        Order Now
-      </div>
-      <h2 id="order-title" class="order-title reveal reveal-delay-1">
-        Craving something <em>sweet?</em>
-      </h2>
-      <p class="order-desc reveal reveal-delay-2">
-        Order online through Zomato or Swiggy, visit us in-store, or reach out directly for custom cake orders.
-      </p>
-      <div class="order-btns reveal reveal-delay-3">
-        <a href="https://www.zomato.com/ludhiana/ansh-bakers-gill-road" target="_blank" rel="noopener noreferrer" class="order-platform-btn" aria-label="Order on Zomato">
-          <i class="bi bi-bag-heart-fill"></i> Zomato
-        </a>
-        <a href="https://www.swiggy.com/restaurants/ansh-bakers-shimlapuri-gill-road-ludhiana-738621" target="_blank" rel="noopener noreferrer" class="order-platform-btn" aria-label="Order on Swiggy">
-          <i class="bi bi-bicycle"></i> Swiggy
-        </a>
-        <a href="order.html" class="btn-primary" aria-label="Custom order">
-          Custom Order
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════ TESTIMONIALS ════ -->
-  <section class="section testimonials-section" aria-labelledby="reviews-title">
-    <div class="container">
-      <div style="text-align:center;margin-bottom:0;">
-        <div class="section-eyebrow reveal" style="justify-content:center;">Reviews</div>
-        <h2 id="reviews-title" class="section-title reveal reveal-delay-1" style="text-align:center;">
-          What Our <em>Customers</em> Say
-        </h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="stars">
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-          </div>
-          <p class="testimonial-text">"The custom birthday cake was absolutely gorgeous and tasted even better than it looked. My daughter was over the moon! Highly recommend Ansh Bakers for any celebration."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar"><i class="bi bi-person-fill"></i></div>
-            <div>
-              <div class="author-name">Priya Sharma</div>
-              <div class="author-tag">Zomato Review</div>
+      <div class="menu-grid reverse">
+        <div class="menu-content reveal">
+          <h2 class="menu-category-title">Decadent <em>Brownies</em></h2>
+          <div class="menu-category-note"><i class="bi bi-box2-heart"></i> Per Slice</div>
+          
+          <div class="menu-list">
+            <div class="menu-item">
+              <div class="menu-item-name">Choco Chip Brownie</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹40</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Dry Fruit Brownie</div>
+              <div class="menu-item-dots"></div>
+              <div class="menu-item-price">₹35</div>
             </div>
           </div>
         </div>
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="stars">
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-          </div>
-          <p class="testimonial-text">"Best cream rolls in all of Ludhiana, hands down. Fresh every single time. The biscuits are a family staple — we never go anywhere else for our daily treats."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar"><i class="bi bi-person-fill"></i></div>
-            <div>
-              <div class="author-name">Rajveer Singh</div>
-              <div class="author-tag">Regular Customer</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="stars">
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-          </div>
-          <p class="testimonial-text">"Ordered a wedding cake and was blown away by the detail and the taste. The team was so professional and delivered exactly what we envisioned. Simply brilliant!"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar"><i class="bi bi-person-fill"></i></div>
-            <div>
-              <div class="author-name">Meenu Kapoor</div>
-              <div class="author-tag">Google Review</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════ VISIT US ════ -->
-  <section class="section visit-section" id="contact" aria-labelledby="visit-title">
-    <div class="container">
-      <div class="section-eyebrow reveal">Find Us</div>
-      <h2 id="visit-title" class="section-title reveal reveal-delay-1" style="margin-bottom:40px;">
-        Come <em>Visit</em> Us
-      </h2>
-      <div class="visit-grid">
-        <div class="visit-info">
-          <div class="contact-items">
-            <div class="contact-item reveal">
-              <div class="contact-item-icon"><i class="bi bi-geo-alt-fill"></i></div>
-              <div>
-                <div class="contact-item-title">Address</div>
-                <div class="contact-item-body">1474/2, St no. 11, Kwality Rd, near matharoo chownk,<br>Shimlapuri, Ludhiana, Punjab 141003</div>
-              </div>
-            </div>
-            <div class="contact-item reveal reveal-delay-1">
-              <div class="contact-item-icon"><i class="bi bi-clock-fill"></i></div>
-              <div>
-                <div class="contact-item-title">Opening Hours</div>
-                <div class="contact-item-body">Mon–Sat: 7:00 AM – 9:00 PM<br>Sunday: 7:00 AM – 8:00 PM</div>
-              </div>
-            </div>
-            <div class="contact-item reveal reveal-delay-2">
-              <div class="contact-item-icon"><i class="bi bi-chat-dots-fill"></i></div>
-              <div>
-                <div class="contact-item-title">Get in Touch</div>
-                <div class="contact-item-body">
-                  <a href="contact.html" style="color:var(--gold);font-weight:600;">Contact us for custom orders →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="social-row reveal reveal-delay-3">
-            <a href="https://www.facebook.com/profile.php?id=61561028477406" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
-              <i class="bi bi-facebook" style="color:var(--gold);font-size:1.1rem;"></i>
-            </a>
-            <a href="https://www.instagram.com/ansh_bakers/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
-              <i class="bi bi-instagram" style="color:var(--gold);font-size:1.1rem;"></i>
-            </a>
-            <a href="https://whatsapp.com/channel/0029Va4okLuHgZWlFmK8HM0k" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
-              <i class="bi bi-whatsapp" style="color:var(--gold);font-size:1.1rem;"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="map-placeholder reveal reveal-delay-2">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3418.864847655!2d75.8275!3d30.9010!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a83b78fc0f4b5%3A0x5c97b0e62d56ca03!2sAnsh%20Bakers!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
-            allowfullscreen loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Ansh Bakers location on Google Maps"
-          ></iframe>
-          <div class="map-card">
-            <div class="map-card-name"><i class="bi bi-shop" style="color:var(--gold);margin-right:5px;"></i>Ansh Bakers</div>
-            <div class="map-card-sub">Shimlapuri, Ludhiana</div>
-          </div>
+        <div class="menu-image-wrapper reveal reveal-delay-1">
+          <img src="images/chocolate-brownies-on-plate-icon-600nw-2087034628.webp" alt="Brownies" loading="lazy">
         </div>
       </div>
     </div>
@@ -1722,8 +693,8 @@
           <h3>Navigate</h3>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
             <li><a href="menu.html">Our Menu</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
@@ -1731,12 +702,11 @@
         <div class="footer-col">
           <h3>Menu</h3>
           <ul>
-            <li><a href="menu.html">Biscuits</a></li>
-            <li><a href="menu.html">Custom Cakes</a></li>
-            <li><a href="menu.html">Pastries</a></li>
-            <li><a href="menu.html">Puff Patties</a></li>
-            <li><a href="menu.html">Cream Rolls</a></li>
-            <li><a href="menu.html">Choco Brownies</a></li>
+            <li><a href="#biscuits">Biscuits</a></li>
+            <li><a href="#pastries-cakes">Custom Cakes</a></li>
+            <li><a href="#pastries-cakes">Pastries</a></li>
+            <li><a href="#patties">Puff Patties</a></li>
+            <li><a href="#brownies">Choco Brownies</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1762,26 +732,22 @@
     </div>
   </footer>
 
-  <!-- Back to top -->
   <button class="back-top" id="back-top" aria-label="Back to top">
     <i class="bi bi-arrow-up" style="font-size:1.1rem;"></i>
   </button>
 
   <script>
-    /* ════ LOADER ════ */
+    /* ════ LOADER (Optimized Timeout) ════ */
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('page-loader').classList.add('hidden');
-        // Trigger hero animations
-        document.getElementById('hero-left').classList.add('visible');
-        document.getElementById('hero-right').classList.add('visible');
-      }, 900);
+      }, 200); // Super fast 200ms delay
     });
 
     /* ════ YEAR ════ */
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    /* ════ NAVBAR SCROLL ════ */
+    /* ════ NAVBAR & BACK TO TOP SCROLL ════ */
     const navbar = document.getElementById('navbar');
     const backTop = document.getElementById('back-top');
     window.addEventListener('scroll', () => {
@@ -1798,6 +764,7 @@
     hamBtn.addEventListener('click', () => {
       const open = hamBtn.classList.toggle('active');
       mobileMenu.classList.toggle('active', open);
+      navbar.classList.toggle('menu-open', open); // Class to handle logo color
       hamBtn.setAttribute('aria-expanded', open);
       document.body.style.overflow = open ? 'hidden' : '';
     });
@@ -1805,6 +772,7 @@
       link.addEventListener('click', () => {
         hamBtn.classList.remove('active');
         mobileMenu.classList.remove('active');
+        navbar.classList.remove('menu-open');
         hamBtn.setAttribute('aria-expanded', false);
         document.body.style.overflow = '';
       });
@@ -1822,7 +790,7 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ════ HERO CANVAS — floating flour particles ════ */
+    /* ════ HERO CANVAS ════ */
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -1845,7 +813,7 @@
       };
     }
 
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 60; i++) {
       const p = createParticle();
       p.y = Math.random() * canvas.height;
       particles.push(p);
@@ -1856,9 +824,7 @@
       particles.forEach((p, i) => {
         p.y -= p.speed;
         p.x += p.drift;
-        if (p.y < -10) {
-          particles[i] = createParticle();
-        }
+        if (p.y < -10) { particles[i] = createParticle(); }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(200, 149, 108, ${p.opacity})`;
@@ -1868,146 +834,31 @@
     }
     animateParticles();
 
-    /* ════ PARALLAX ════ */
-    const parallaxEls = document.querySelectorAll('.parallax-element');
+    /* ════ PARALLAX HERO BG ════ */
     const heroBg = document.getElementById('hero-bg');
-
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
-
-      // Hero bg parallax
-      heroBg.style.transform = `translateY(${y * 0.25}px)`;
-
-      parallaxEls.forEach(el => {
-        const speed = parseFloat(el.dataset.speed) || 0.08;
-        const rect = el.getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
-        const offset = (window.innerHeight / 2 - center) * speed;
-        el.style.transform = `translateY(${offset}px)`;
-      });
+      if (y < window.innerHeight) {
+        heroBg.style.transform = `translateY(${y * 0.25}px)`;
+      }
     }, { passive: true });
 
-    /* ════ MARQUEE BUILD ════ */
-    const marqueeItems = [
-      '🍰 Custom Cakes', '🥐 Artisan Pastries', '🍪 Buttery Biscuits',
-      '🍦 Ice Creams', '🥧 Cream Rolls', '🍫 Choco Brownies',
-      '🥖 Puff Patties', '🎂 Wedding Cakes', '✨ Fresh Daily'
-    ];
-    const track = document.getElementById('marquee-track');
-    const allItems = [...marqueeItems, ...marqueeItems]; // duplicate for loop
-    allItems.forEach((item, i) => {
-      const el = document.createElement('div');
-      el.className = 'marquee-item';
-      el.innerHTML = item + '<span class="marquee-dot"></span>';
-      track.appendChild(el);
-    });
+    /* ════ STICKY NAV HIGHLIGHTING ════ */
+    const sections = document.querySelectorAll('.menu-section');
+    const navLinks = document.querySelectorAll('.menu-nav .menu-link');
 
-    /* ════ GALLERY SLIDERS ════ */
-    function buildSlider(trackId, images) {
-      const track = document.getElementById(trackId);
-      // Clear skeletons
-      track.innerHTML = '';
-      // Duplicate images for seamless loop
-      const allImgs = [...images, ...images];
-      allImgs.forEach(({ src, alt }) => {
-        const item = document.createElement('div');
-        item.className = 'slide-item';
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = alt;
-        img.loading = 'lazy';
-        img.width = 220;
-        img.height = 220;
-        item.appendChild(img);
-        track.appendChild(item);
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= (sectionTop - 150)) { current = section.getAttribute('id'); }
       });
-    }
 
-    // Build with actual paths
-    buildSlider('track-biscuits', [
-      { src: 'biscuits/1 (1).png', alt: 'Biscuit variety 1' },
-      { src: 'biscuits/2 (1).png', alt: 'Biscuit variety 2' },
-      { src: 'biscuits/3 (1).png', alt: 'Biscuit variety 3' },
-      { src: 'biscuits/4 (1).png', alt: 'Biscuit variety 4' },
-      { src: 'biscuits/5 (1).png', alt: 'Biscuit variety 5' },
-      { src: 'biscuits/6.png', alt: 'Biscuit variety 6' },
-      { src: 'biscuits/7.png', alt: 'Biscuit variety 7' },
-      { src: 'biscuits/8.png', alt: 'Biscuit variety 8' },
-    ]);
-
-    buildSlider('track-cakes', [
-      { src: 'cakes/WhatsApp Image 2024-06-16 at 18.32.54_07878ed1.jpg', alt: 'Custom cake design 1' },
-      { src: 'cakes/WhatsApp Image 2024-06-16 at 18.32.54_f30ed002.jpg', alt: 'Custom cake design 2' },
-      { src: 'cakes/WhatsApp Image 2024-06-16 at 18.32.57_54cd6e94.jpg', alt: 'Custom cake design 3' },
-      { src: 'cakes/WhatsApp Image 2024-06-16 at 18.32.58_0824b104.jpg', alt: 'Custom cake design 4' },
-      { src: 'cakes/WhatsApp Image 2024-06-16 at 18.32.58_51209bf8.jpg', alt: 'Custom cake design 5' },
-      { src: 'cakes/WhatsApp Image 2024-06-16 at 18.32.58_9e51c0bc.jpg', alt: 'Custom cake design 6' },
-      { src: 'cakes/WhatsApp Image 2024-06-16 at 18.32.59_9907c000.jpg', alt: 'Custom cake design 7' },
-      { src: 'cakes/WhatsApp Image 2024-06-16 at 18.33.33_83fedca0.jpg', alt: 'Custom cake design 8' },
-    ]);
-
-    buildSlider('track-icecream', [
-      { src: 'ice cream/1.jpg', alt: 'Ice cream flavor 1' },
-      { src: 'ice cream/2.jpg', alt: 'Ice cream flavor 2' },
-      { src: 'ice cream/3.jpg', alt: 'Ice cream flavor 3' },
-      { src: 'ice cream/4.jpg', alt: 'Ice cream flavor 4' },
-      { src: 'ice cream/5.jpg', alt: 'Ice cream flavor 5' },
-      { src: 'ice cream/6.png', alt: 'Ice cream flavor 6' },
-      { src: 'ice cream/7.png', alt: 'Ice cream flavor 7' },
-      { src: 'ice cream/8.png', alt: 'Ice cream flavor 8' },
-    ]);
-
-    /* ════ MENU CARDS (replace skeletons) ════ */
-    const menuData = [
-      {
-        name: 'Signature Custom Cakes',
-        desc: 'Handcrafted for every occasion — birthdays, weddings, anniversaries. Fully customizable design and flavors.',
-        tag: 'Most Popular',
-        price: 'From ₹599',
-        img: 'cakes/WhatsApp Image 2024-06-16 at 18.32.54_07878ed1.jpg',
-        imgAlt: 'Custom cake at Ansh Bakers'
-      },
-      {
-        name: 'Artisan Pastries',
-        desc: 'Flaky, buttery, and impossibly light. Our pastries are baked fresh every morning without compromise.',
-        tag: 'Daily Fresh',
-        price: 'From ₹35',
-        img: 'images/pexels-chudesabyvaut-1351350-3250406.jpg',
-        imgAlt: 'Fresh pastries at Ansh Bakers'
-      },
-      {
-        name: 'Premium Biscuits',
-        desc: 'Traditional Indian-style biscuits baked with pure ghee and premium flour. Available in assorted flavors.',
-        tag: 'Bestseller',
-        price: 'From ₹20',
-        img: 'biscuits/1 (1).png',
-        imgAlt: 'Premium biscuits at Ansh Bakers'
-      }
-    ];
-
-    const grid = document.getElementById('menu-grid');
-    grid.innerHTML = '';
-    menuData.forEach(item => {
-      grid.innerHTML += `
-        <article class="menu-card reveal">
-          <div class="menu-card-img">
-            <img src="${item.img}" alt="${item.imgAlt}" loading="lazy" width="400" height="200">
-            <div class="menu-card-tag">${item.tag}</div>
-          </div>
-          <div class="menu-card-body">
-            <h3 class="menu-card-name">${item.name}</h3>
-            <p class="menu-card-desc">${item.desc}</p>
-            <div class="menu-card-footer">
-              <span class="menu-card-price">${item.price}</span>
-              <a href="menu.html" class="menu-card-btn" aria-label="View ${item.name}">→</a>
-            </div>
-          </div>
-        </article>
-      `;
-    });
-
-    // Re-observe newly added reveal elements
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+      });
+    }, { passive: true });
 
     /* ════ SMOOTH ANCHOR SCROLLING ════ */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -2015,7 +866,14 @@
         const target = document.querySelector(a.getAttribute('href'));
         if (target) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const offset = 130; 
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
         }
       });
     });
