@@ -25,6 +25,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -451,8 +454,9 @@
       background: var(--gold);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       flex-shrink: 0;
+      color: var(--white);
     }
     .hero-badge-text { line-height: 1.3; }
     .hero-badge-title {
@@ -674,10 +678,11 @@
       transform: translateY(-3px);
     }
     .chip-icon {
-      font-size: 1.4rem; flex-shrink: 0;
+      font-size: 1.15rem; flex-shrink: 0;
       width: 36px; height: 36px;
       display: flex; align-items: center; justify-content: center;
       background: var(--blush); border-radius: 10px;
+      color: var(--gold);
     }
     .chip-text .chip-title {
       font-weight: 600; font-size: 0.88rem; color: var(--brown-deep);
@@ -726,7 +731,9 @@
     }
     .quality-item:hover { background: rgba(200,149,108,0.12); }
     .quality-icon {
-      font-size: 2.2rem; margin-bottom: 16px;
+      font-size: 2rem; margin-bottom: 16px;
+      color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
     }
     .quality-title {
       font-family: var(--font-display);
@@ -1013,9 +1020,9 @@
     }
     .stars {
       color: var(--gold);
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+      font-size: 0.85rem;
       margin-bottom: 14px;
+      display: flex; gap: 3px;
     }
     .testimonial-text {
       font-family: var(--font-display);
@@ -1034,6 +1041,8 @@
       background: var(--blush);
       display: flex; align-items: center; justify-content: center;
       font-size: 1.2rem;
+      color: var(--gold);
+      flex-shrink: 0;
     }
     .author-name {
       font-weight: 600; font-size: 0.88rem; color: var(--brown-deep);
@@ -1257,7 +1266,7 @@
   <div class="nav-wrap" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Ansh Bakers Home">
-        <div class="nav-logo-icon">🍞</div>
+        <div class="nav-logo-icon"><i class="bi bi-cake2-fill" style="font-size:1rem;color:var(--white);"></i></div>
         Ansh Bakers
       </a>
       <nav role="navigation" aria-label="Main navigation">
@@ -1304,7 +1313,7 @@
         <div class="hero-actions">
           <a href="order.html" class="btn-primary">
             Order Now
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <i class="bi bi-arrow-right" style="font-size:0.85rem;"></i>
           </a>
           <a href="#gallery" class="btn-ghost">
             View Gallery
@@ -1327,7 +1336,7 @@
       </div>
 
       <div class="hero-right" id="hero-right">
-        <div class="hero-floating-tag">✦ Custom Orders Open</div>
+        <div class="hero-floating-tag"><i class="bi bi-stars"></i> Custom Orders Open</div>
         <div class="hero-image-frame">
           <img
             src="images/pexels-abhinavcoca-291528.jpg"
@@ -1338,7 +1347,7 @@
           >
         </div>
         <div class="hero-badge">
-          <div class="hero-badge-icon">🎂</div>
+          <div class="hero-badge-icon"><i class="bi bi-cake2-fill"></i></div>
           <div class="hero-badge-text">
             <div class="hero-badge-title">Custom Cakes</div>
             <div class="hero-badge-sub">Order 24 hrs in advance</div>
@@ -1396,28 +1405,28 @@
 
           <div class="about-highlights reveal reveal-delay-3">
             <div class="highlight-chip">
-              <div class="chip-icon">🌾</div>
+              <div class="chip-icon"><i class="bi bi-flower1"></i></div>
               <div class="chip-text">
                 <div class="chip-title">Premium Ingredients</div>
                 <div class="chip-sub">Sourced fresh every morning</div>
               </div>
             </div>
             <div class="highlight-chip">
-              <div class="chip-icon">👨‍🍳</div>
+              <div class="chip-icon"><i class="bi bi-person-badge-fill"></i></div>
               <div class="chip-text">
                 <div class="chip-title">Expert Bakers</div>
                 <div class="chip-sub">Trained with decades of craft</div>
               </div>
             </div>
             <div class="highlight-chip">
-              <div class="chip-icon">🎂</div>
+              <div class="chip-icon"><i class="bi bi-cake-fill"></i></div>
               <div class="chip-text">
                 <div class="chip-title">Custom Orders</div>
                 <div class="chip-sub">Tailored cakes for every occasion</div>
               </div>
             </div>
             <div class="highlight-chip">
-              <div class="chip-icon">🚀</div>
+              <div class="chip-icon"><i class="bi bi-scooter"></i></div>
               <div class="chip-text">
                 <div class="chip-title">Delivery Available</div>
                 <div class="chip-sub">Zomato &amp; Swiggy</div>
@@ -1453,22 +1462,22 @@
       </div>
       <div class="quality-grid reveal reveal-delay-2">
         <div class="quality-item">
-          <div class="quality-icon">🌿</div>
+          <div class="quality-icon"><i class="bi bi-patch-check-fill"></i></div>
           <div class="quality-title">No Preservatives</div>
           <div class="quality-desc">Everything baked fresh daily — zero artificial additives or preservatives, ever.</div>
         </div>
         <div class="quality-item">
-          <div class="quality-icon">🎨</div>
+          <div class="quality-icon"><i class="bi bi-palette-fill"></i></div>
           <div class="quality-title">Custom Designs</div>
           <div class="quality-desc">From birthdays to weddings, every custom cake is a one-of-a-kind edible masterpiece.</div>
         </div>
         <div class="quality-item">
-          <div class="quality-icon">⚡</div>
+          <div class="quality-icon"><i class="bi bi-lightning-charge-fill"></i></div>
           <div class="quality-title">Same-Day Ready</div>
           <div class="quality-desc">Most items available same day — call ahead for guaranteed availability.</div>
         </div>
         <div class="quality-item">
-          <div class="quality-icon">🏆</div>
+          <div class="quality-icon"><i class="bi bi-trophy-fill"></i></div>
           <div class="quality-title">4.8★ Rated</div>
           <div class="quality-desc">Consistently top-rated on Zomato and Swiggy across hundreds of reviews.</div>
         </div>
@@ -1540,7 +1549,7 @@
         </div>
         <a href="menu.html" class="btn-primary reveal reveal-delay-2" style="margin-bottom:4px;">
           Full Menu
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <i class="bi bi-arrow-right" style="font-size:0.85rem;"></i>
         </a>
       </div>
 
@@ -1568,10 +1577,10 @@
       </p>
       <div class="order-btns reveal reveal-delay-3">
         <a href="https://www.zomato.com/ludhiana/ansh-bakers-gill-road" target="_blank" rel="noopener noreferrer" class="order-platform-btn" aria-label="Order on Zomato">
-          <span>🍽</span> Zomato
+          <i class="bi bi-bag-heart-fill"></i> Zomato
         </a>
         <a href="https://www.swiggy.com/restaurants/ansh-bakers-shimlapuri-gill-road-ludhiana-738621" target="_blank" rel="noopener noreferrer" class="order-platform-btn" aria-label="Order on Swiggy">
-          <span>🛵</span> Swiggy
+          <i class="bi bi-bicycle"></i> Swiggy
         </a>
         <a href="order.html" class="btn-primary" aria-label="Custom order">
           Custom Order
@@ -1592,10 +1601,12 @@
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
-          <div class="stars">★★★★★</div>
+          <div class="stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
           <p class="testimonial-text">"The custom birthday cake was absolutely gorgeous and tasted even better than it looked. My daughter was over the moon! Highly recommend Ansh Bakers for any celebration."</p>
           <div class="testimonial-author">
-            <div class="author-avatar">👤</div>
+            <div class="author-avatar"><i class="bi bi-person-fill"></i></div>
             <div>
               <div class="author-name">Priya Sharma</div>
               <div class="author-tag">Zomato Review</div>
@@ -1603,10 +1614,12 @@
           </div>
         </div>
         <div class="testimonial-card reveal reveal-delay-1">
-          <div class="stars">★★★★★</div>
+          <div class="stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
           <p class="testimonial-text">"Best cream rolls in all of Ludhiana, hands down. Fresh every single time. The biscuits are a family staple — we never go anywhere else for our daily treats."</p>
           <div class="testimonial-author">
-            <div class="author-avatar">👤</div>
+            <div class="author-avatar"><i class="bi bi-person-fill"></i></div>
             <div>
               <div class="author-name">Rajveer Singh</div>
               <div class="author-tag">Regular Customer</div>
@@ -1614,10 +1627,12 @@
           </div>
         </div>
         <div class="testimonial-card reveal reveal-delay-2">
-          <div class="stars">★★★★★</div>
+          <div class="stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
           <p class="testimonial-text">"Ordered a wedding cake and was blown away by the detail and the taste. The team was so professional and delivered exactly what we envisioned. Simply brilliant!"</p>
           <div class="testimonial-author">
-            <div class="author-avatar">👤</div>
+            <div class="author-avatar"><i class="bi bi-person-fill"></i></div>
             <div>
               <div class="author-name">Meenu Kapoor</div>
               <div class="author-tag">Google Review</div>
@@ -1639,21 +1654,21 @@
         <div class="visit-info">
           <div class="contact-items">
             <div class="contact-item reveal">
-              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-icon"><i class="bi bi-geo-alt-fill"></i></div>
               <div>
                 <div class="contact-item-title">Address</div>
                 <div class="contact-item-body">1474/2, St no. 11, Kwality Rd, near matharoo chownk,<br>Shimlapuri, Ludhiana, Punjab 141003</div>
               </div>
             </div>
             <div class="contact-item reveal reveal-delay-1">
-              <div class="contact-item-icon">🕐</div>
+              <div class="contact-item-icon"><i class="bi bi-clock-fill"></i></div>
               <div>
                 <div class="contact-item-title">Opening Hours</div>
                 <div class="contact-item-body">Mon–Sat: 7:00 AM – 9:00 PM<br>Sunday: 7:00 AM – 8:00 PM</div>
               </div>
             </div>
             <div class="contact-item reveal reveal-delay-2">
-              <div class="contact-item-icon">📞</div>
+              <div class="contact-item-icon"><i class="bi bi-chat-dots-fill"></i></div>
               <div>
                 <div class="contact-item-title">Get in Touch</div>
                 <div class="contact-item-body">
@@ -1665,13 +1680,13 @@
 
           <div class="social-row reveal reveal-delay-3">
             <a href="https://www.facebook.com/profile.php?id=61561028477406" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              <i class="bi bi-facebook" style="color:var(--gold);font-size:1.1rem;"></i>
             </a>
             <a href="https://www.instagram.com/ansh_bakers/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold)"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <i class="bi bi-instagram" style="color:var(--gold);font-size:1.1rem;"></i>
             </a>
             <a href="https://whatsapp.com/channel/0029Va4okLuHgZWlFmK8HM0k" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.107.546 4.095 1.5 5.829L0 24l6.335-1.474A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6a9.573 9.573 0 01-4.903-1.347l-.352-.208-3.631.845.859-3.541-.229-.363A9.562 9.562 0 012.4 12C2.4 6.698 6.698 2.4 12 2.4S21.6 6.698 21.6 12 17.302 21.6 12 21.6z"/></svg>
+              <i class="bi bi-whatsapp" style="color:var(--gold);font-size:1.1rem;"></i>
             </a>
           </div>
         </div>
@@ -1684,7 +1699,7 @@
             title="Ansh Bakers location on Google Maps"
           ></iframe>
           <div class="map-card">
-            <div class="map-card-name">🏪 Ansh Bakers</div>
+            <div class="map-card-name"><i class="bi bi-shop" style="color:var(--gold);margin-right:5px;"></i>Ansh Bakers</div>
             <div class="map-card-sub">Shimlapuri, Ludhiana</div>
           </div>
         </div>
@@ -1698,7 +1713,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo-text">
-            <div class="footer-logo-icon">🍞</div>
+            <div class="footer-logo-icon"><i class="bi bi-cake2-fill" style="font-size:1.1rem;color:var(--white);"></i></div>
             Ansh Bakers
           </div>
           <p class="footer-tagline">Ludhiana's finest artisan bakery — blending the warmth of traditional Indian flavors with modern baking craft since day one.</p>
@@ -1740,7 +1755,7 @@
           &copy; <span id="year"></span> <b>Ansh Bakers</b>. All rights reserved.
         </div>
         <div class="footer-address">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="opacity:.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <i class="bi bi-geo-alt-fill" style="opacity:.5;font-size:0.85rem;"></i>
           1474/2, Shimlapuri, Ludhiana, Punjab 141003
         </div>
       </div>
@@ -1749,7 +1764,7 @@
 
   <!-- Back to top -->
   <button class="back-top" id="back-top" aria-label="Back to top">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    <i class="bi bi-arrow-up" style="font-size:1.1rem;"></i>
   </button>
 
   <script>
